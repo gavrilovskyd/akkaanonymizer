@@ -20,7 +20,7 @@ public class ServiceDiscovery {
             String eventPath = watchedEvent.getPath();
             if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
                 try {
-                    byte[] addr = zoo.getData(serverPath, false, null);
+                    byte[] addr = zoo.getData(eventPath, false, null);
                     serversStorageActor.tell(
                         new ChangeServerListMessage(serverPath, new String(addr),
                             ChangeServerListMessage.EventType.ADD),

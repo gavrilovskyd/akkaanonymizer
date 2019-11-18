@@ -25,11 +25,11 @@ public class ServiceDiscovery {
        servers.forEach((addr) -> {
            try {
                zoo.getData(REGISTRY_ROOT+"/"+addr, false, null);
-           } catch (KeeperException e) {
-               e.printStackTrace();
-           } catch (InterruptedException e) {
+           } catch (KeeperException | InterruptedException e) {
+               // TODO: log message
                e.printStackTrace();
            }
+
            serversStorageActor.tell(
                    new ChangeServerListMessage(addr, ChangeServerListMessage.EventType.ADD),
                    ActorRef.noSender()

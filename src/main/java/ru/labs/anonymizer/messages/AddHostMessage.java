@@ -9,11 +9,11 @@ public class AddHostMessage {
         this.host = host;
     }
 
-    public String getServerName() {
-        return serverName;
+    public String getHostName() {
+        return hostName;
     }
 
-    public String getServerAddr() {
-        return serverAddr;
+    public String getHost() {
+        return host;
     }
 }

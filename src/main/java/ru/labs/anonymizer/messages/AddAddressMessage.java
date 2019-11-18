@@ -4,9 +4,9 @@ public class AddAddressMessage {
     private String addrName;
     private String addr;
 
-    public AddAddressMessage(String hostName, String host) {
-        this.addrName = hostName;
-        this.addr = host;
+    public AddAddressMessage(String addrName, String addr) {
+        this.addrName = addrName;
+        this.addr = addr;
     }
 
     public String getAddrName() {

@@ -16,10 +16,10 @@ public class ServiceDiscovery {
     private ZooKeeper zoo;
     private ActorRef hostStorageActor;
 
-    public ServiceDiscovery(String zkHost, ActorRef hostStorageActor)
+    public ServiceDiscovery(String zkAddr, ActorRef hostStorageActor)
         throws IOException, KeeperException, InterruptedException {
         this.hostStorageActor = hostStorageActor;
-        this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT, this::watchEvents);
+        this.zoo = new ZooKeeper(zkAddr, SESSION_TIMEOUT, this::watchEvents);
 
         this.loadServersList();
     }

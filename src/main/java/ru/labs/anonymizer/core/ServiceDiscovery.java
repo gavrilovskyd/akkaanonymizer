@@ -20,33 +20,33 @@ public class ServiceDiscovery {
         throws IOException, KeeperException, InterruptedException {
         this.serversStorageActor = serversStorageActor;
         this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT, watchedEvent -> {
-            String eventPath = watchedEvent.getPath();
-            if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
-                try {
-                    byte[] addr = zoo.getData(eventPath, false, null);
-                    serversStorageActor.tell(
-                        new ChangeServerListMessage(eventPath, new String(addr),
-                            ChangeServerListMessage.EventType.ADD),
-                        ActorRef.noSender()
-                    );
-                } catch (KeeperException | InterruptedException e) {
-                    // TODO: log message
-                    e.printStackTrace();
-                }
-            } else if (watchedEvent.getType() == Watcher.Event.EventType.NodeDeleted) {
-                serversStorageActor.tell(
-                    new ChangeServerListMessage(eventPath, "",
-                        ChangeServerListMessage.EventType.REMOVE),
-                    ActorRef.noSender()
-                );
-            }
+
         });
 
         this.loadServersList(serversStorageActor);
     }
 
-    private void watchEvents(ActorRef serversStorageActor) {
-
+    private void watchEvents(WatchedEvent) {
+        String eventPath = watchedEvent.getPath();
+        if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
+            try {
+                byte[] addr = zoo.getData(eventPath, false, null);
+                serversStorageActor.tell(
+                    new ChangeServerListMessage(eventPath, new String(addr),
+                        ChangeServerListMessage.EventType.ADD),
+                    ActorRef.noSender()
+                );
+            } catch (KeeperException | InterruptedException e) {
+                // TODO: log message
+                e.printStackTrace();
+            }
+        } else if (watchedEvent.getType() == Watcher.Event.EventType.NodeDeleted) {
+            serversStorageActor.tell(
+                new ChangeServerListMessage(eventPath, "",
+                    ChangeServerListMessage.EventType.REMOVE),
+                ActorRef.noSender()
+            );
+        }
     }
 
     private void loadServersList(ActorRef serversStorageActor) throws KeeperException, InterruptedException {

@@ -28,7 +28,7 @@ public class ServiceDiscovery {
 
     private ZooKeeper connect() throws IOException {
         return new ZooKeeper(zkAddr, SESSION_TIMEOUT, watchedEvent -> {
-
+            
         });
     }
 

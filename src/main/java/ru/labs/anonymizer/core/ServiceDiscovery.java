@@ -40,7 +40,7 @@ public class ServiceDiscovery {
         });
     }
 
-    private void reconnect() throws IOException {
+    private void reconnect() throws IOException, KeeperException, InterruptedException {
         zoo = connect();
         if (zoo != null) {
             watchNodes();

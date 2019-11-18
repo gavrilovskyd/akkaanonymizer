@@ -5,6 +5,7 @@ import akka.actor.ActorSystem;
 import akka.http.javadsl.Http;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
+import akka.http.javadsl.model.Uri;
 import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
 import akka.pattern.Patterns;
@@ -51,7 +52,7 @@ public class AnonymizerRoutes extends AllDirectives {
         return Patterns.ask(hostStoreActor, new GetRandomHostMessage(), TIMEOUT)
             .thenCompose(serverNameParam -> {
                 String serverName = ((String) serverNameParam);
-                
+                Uri.create(url).addPathSegment("")
             });
     }
 }

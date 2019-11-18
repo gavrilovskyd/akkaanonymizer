@@ -63,17 +63,8 @@ public class ServiceDiscovery {
 
             List<String> addresses = new ArrayList<>();
             servers.forEach((server) -> {
-                    try {
                         String serverPath = REGISTRY_ROOT + "/" + server;
                         byte[] addr = zoo.getData(serverPath, false, null);
-                        addressStorageActor.tell(
-                            new SetAddressesMessage(serverPath, new String(addr)),
-                            ActorRef.noSender()
-                        );
-                    } catch (KeeperException | InterruptedException e) {
-                        // TODO: log message
-                        e.printStackTrace();
-                    }
                 }
             );
         } catch (KeeperException | InterruptedException e) {

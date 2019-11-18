@@ -55,7 +55,7 @@ public class ServiceDiscovery {
 
     private void watchNodes() {
         zoo.getChildren(REGISTRY_ROOT, watchedEvent -> {
-            if (watchedEvent.getType() == )
+            if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated)
         })
 
 

@@ -18,8 +18,10 @@ public class ServiceDiscovery {
         throws IOException, KeeperException, InterruptedException {
         this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT, watchedEvent -> {
             String eventPath = watchedEvent.getPath();
+
+            try {
             if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
-                try {
+
                     byte[] addr = zoo.getData(eventPath, false, null);
                     serversStorageActor.tell(
                         new ChangeServerListMessage(eventPath, new String(addr),

@@ -39,6 +39,6 @@ public class AnonymizerRoutes extends AllDirectives {
     }
 
     private CompletionStage<HttpResponse> fetch(String url) {
-        return Http.get(system).singleRequest(HttpRequest.create(urlQuery));
+        return Http.get(system).singleRequest(HttpRequest.create(url));
     }
 }

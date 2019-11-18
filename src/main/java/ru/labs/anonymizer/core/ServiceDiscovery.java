@@ -64,6 +64,7 @@ public class ServiceDiscovery {
                 }
             });
 
+            logger.info("servers list updated");
             List<String> addresses = new ArrayList<>();
             for (String nodeName : serverNodeNames) {
                 byte[] addr = zoo.getData(REGISTRY_ROOT + "/" + nodeName, false, null);

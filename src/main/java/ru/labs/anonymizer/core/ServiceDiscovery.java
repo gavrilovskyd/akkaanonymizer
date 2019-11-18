@@ -57,7 +57,7 @@ public class ServiceDiscovery {
     private void watchNodes() throws KeeperException, InterruptedException {
         zoo.getChildren(REGISTRY_ROOT, watchedEvent -> {
             System.out.println(watchedEvent.toString());
-            watchedEvent()
+            watchNodes()
         });
 
 

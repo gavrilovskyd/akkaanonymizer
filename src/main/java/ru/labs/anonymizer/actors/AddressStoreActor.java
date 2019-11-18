@@ -20,7 +20,7 @@ public class AddressStoreActor extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
             .match(SetAddressListMessage.class, m -> {
-
+                hostsStorage = m.getAddrList();
                 hostsStorage.put(m.getAddrName(), m.getAddr());
                 logger.info("added {} with name {}", m.getAddr(), m.getAddrName());
             })

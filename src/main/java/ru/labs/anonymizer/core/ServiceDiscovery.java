@@ -32,7 +32,7 @@ public class ServiceDiscovery {
                 || watchedEvent.getState() == Watcher.Event.KeeperState.Disconnected) {
                 try {
                     reconnect();
-                } catch (IOException | InterruptedException | KeeperException e) {
+                } catch (IOException e) {
                     // TODO: log error
                     e.printStackTrace();
                 }

@@ -19,7 +19,7 @@ public class ServiceDiscovery {
 
         });
 
-        zoo.getChildren(REGISTRY_ROOT, false);
+       List<String> = zoo.getChildren(REGISTRY_ROOT, false);
     }
 
     public void register(String host) throws KeeperException, InterruptedException {

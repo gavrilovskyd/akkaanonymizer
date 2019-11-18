@@ -64,6 +64,7 @@ public class ServiceDiscovery {
             List<String> addresses = new ArrayList<>();
             for (String nodeName : serverNodeNames) {
                 byte[] addr = zoo.getData(REGISTRY_ROOT + "/" + nodeName, false, null);
+                addresses.add(new String(addr));
             });
         } catch (KeeperException | InterruptedException e) {
             e.printStackTrace();

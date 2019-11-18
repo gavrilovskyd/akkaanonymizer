@@ -4,6 +4,7 @@ import akka.actor.AbstractActor;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
 import akka.japi.pf.ReceiveBuilder;
+import org.slf4j.LoggerFactory;
 import ru.labs.anonymizer.messages.GetRandomAddressMessage;
 import ru.labs.anonymizer.messages.SetAddressesMessage;
 
@@ -11,7 +12,7 @@ import java.util.Random;
 
 public class AddressStoreActor extends AbstractActor {
     private String[] addresses;
-    private LoggingAdapter logger = Logging.getLogger(getContext().getSystem(), this);
+    private LoggingAdapter logger = LoggerFactory.getLogger(AddressStoreActor.class);
 
     @Override
     public Receive createReceive() {

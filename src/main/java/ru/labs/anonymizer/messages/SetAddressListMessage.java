@@ -6,6 +6,7 @@ public class SetAddressListMessage {
     private String[] addrList;
 
     public SetAddressListMessage(List<String> addrList) {
+        String[].class
         this.addrList = addrList;
     }
 

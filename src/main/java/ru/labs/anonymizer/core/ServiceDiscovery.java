@@ -55,7 +55,7 @@ public class ServiceDiscovery {
 
     private void watchNodes() {
         try {
-            zoo.getChildren(REGISTRY_ROOT, watchedEvent -> {
+            List<String> servers = zoo.getChildren(REGISTRY_ROOT, watchedEvent -> {
                 if (watchedEvent.getType() == Watcher.Event.EventType.NodeChildrenChanged) {
                     watchNodes();
                 }

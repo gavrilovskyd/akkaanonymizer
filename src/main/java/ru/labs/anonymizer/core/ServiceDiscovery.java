@@ -30,7 +30,11 @@ public class ServiceDiscovery {
         return new ZooKeeper(zkAddr, SESSION_TIMEOUT, watchedEvent -> {
             if (watchedEvent.getState() == Watcher.Event.KeeperState.Expired
                 || watchedEvent.getState() == Watcher.Event.KeeperState.Disconnected) {
-                reconnect();
+                try {
+                    reconnect();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

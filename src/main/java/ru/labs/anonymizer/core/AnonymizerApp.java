@@ -18,6 +18,7 @@ public class AnonymizerApp {
             System.err.println("Usage: AnonymizerApp <host> <port>");
             System.exit(-1);
         }
+        String host = args[0];
 
         ActorSystem system = ActorSystem.create("anonymizer-system");
 

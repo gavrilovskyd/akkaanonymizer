@@ -16,6 +16,10 @@ public class ChangeServerListMessage {
         this.type = type;
     }
 
+    public String getServerName() {
+        return serverName;
+    }
+
     public String getServerAddr() {
         return serverAddr;
     }

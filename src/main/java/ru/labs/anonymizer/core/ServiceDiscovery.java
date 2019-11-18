@@ -19,7 +19,7 @@ public class ServiceDiscovery {
         this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT, watchedEvent -> {
             String eventPath = watchedEvent.getPath();
             if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
-                byte[] addr = zoo.getData(REGISTRY_ROOT+"/"+server, false, null);
+                byte[] addr = zoo.getData(eventPath, false, null);
             }
         });
 

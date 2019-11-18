@@ -25,5 +25,8 @@ public class AnonymizerApp {
             routeFlow, ConnectHttp.toHost("localhost", 8080), materializer);
 
         System.out.println("Server started at http://localhost:8080/");
+        System.in.read();
+        binding.thenCompose(ServerBinding::unbind)
+            .thenAccept(unbound -> system.terminate());
     }
 }

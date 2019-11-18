@@ -1,10 +1,17 @@
 package ru.labs.anonymizer.core;
 
+import akka.actor.ActorRef;
+import akka.actor.ActorSystem;
+import akka.http.javadsl.Http;
 import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
 
 public class AnonymizerRoutes extends AllDirectives {
     public AnonymizerRoutes() {}
+
+    public AnonymizerRoutes(ActorSystem system, ActorRef hostStoreActor) {
+        
+    }
 
     public Route route() {
         return route(

@@ -2,8 +2,7 @@ package ru.labs.anonymizer.core;
 
 import akka.actor.ActorRef;
 import org.apache.zookeeper.*;
-import ru.labs.anonymizer.messages.AddAddressMessage;
-import ru.labs.anonymizer.messages.RemoveAddressMessage;
+import ru.labs.anonymizer.messages.SetAddressListMessage;
 
 import java.io.IOException;
 import java.util.List;
@@ -66,7 +65,7 @@ public class ServiceDiscovery {
                         String serverPath = REGISTRY_ROOT + "/" + server;
                         byte[] addr = zoo.getData(serverPath, false, null);
                         addressStorageActor.tell(
-                            new AddAddressMessage(serverPath, new String(addr)),
+                            new SetAddressListMessage(serverPath, new String(addr)),
                             ActorRef.noSender()
                         );
                     } catch (KeeperException | InterruptedException e) {

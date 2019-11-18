@@ -1,10 +1,11 @@
 package ru.labs.anonymizer.messages;
 
-public class AddAddressMessage {
-    private String addrName;
-    private String addr;
+import java.util.List;
 
-    public AddAddressMessage(String addrName, String addr) {
+public class SetAddressListMessage {
+    private List<String> addrList;
+
+    public SetAddressListMessage(String addrName, String addr) {
         this.addrName = addrName;
         this.addr = addr;
     }

@@ -63,8 +63,8 @@ public class ServiceDiscovery {
 
             List<String> addresses = new ArrayList<>();
             servers.forEach((server) -> {
-                        String serverPath = REGISTRY_ROOT + "/" + server;
-                        byte[] addr = zoo.getData(serverPath, false, null);
+                String serverPath = REGISTRY_ROOT + "/" + server;
+                byte[] addr = zoo.getData(serverPath, false, null);
                 }
             );
         } catch (KeeperException | InterruptedException e) {

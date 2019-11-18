@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Random;
 
 public class AddressStoreActor extends AbstractActor {
-    private List<String> hostsStorage = new ArrayList<>();
+    private String[] hostsStorage = new ArrayList<>();
     private LoggingAdapter logger = Logging.getLogger(getContext().getSystem(), this);
 
     @Override
@@ -24,7 +24,7 @@ public class AddressStoreActor extends AbstractActor {
                 logger.info("received new hosts list");
             })
             .match(GetRandomAddressMessage.class, m -> {
-                Object[] servers = hostsStorage.values().toArray();
+                Object[] servers = hostsStorage.;
                 getSender().tell(servers[new Random().nextInt(servers.length)], getSelf());
             })
             .matchAny(o -> { logger.warning("got unknown message: {}", o.getClass().toString()); })

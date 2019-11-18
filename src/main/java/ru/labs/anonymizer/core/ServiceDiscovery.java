@@ -1,5 +1,7 @@
 package ru.labs.anonymizer.core;
 
+import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 
 import java.io.IOException;
@@ -15,6 +17,11 @@ public class ServiceDiscovery {
     }
 
     public void register(String host) {
-        zoo.create(REGISTRY_NODE_PATH, host.getBytes(), )
+        zoo.create(
+            REGISTRY_NODE_PATH,
+            host.getBytes(),
+            ZooDefs.Ids.OPEN_ACL_UNSAFE,
+            CreateMode.EPHEMERAL_SEQUENTIAL,
+            );
     }
 }

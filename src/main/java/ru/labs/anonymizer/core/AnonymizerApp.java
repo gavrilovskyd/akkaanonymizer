@@ -18,6 +18,7 @@ public class AnonymizerApp {
             System.err.println("Usage: AnonymizerApp <zkAddr> <host> <port>");
             System.exit(-1);
         }
+        String zkAddr = args[0];
         String host = args[1];
         int port = Integer.parseInt(args[1]);
 

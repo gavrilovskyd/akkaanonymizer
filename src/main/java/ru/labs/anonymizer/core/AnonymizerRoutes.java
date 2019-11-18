@@ -28,7 +28,7 @@ public class AnonymizerRoutes extends AllDirectives {
                             parameter("count", (countQuery)-> {
                                 int count = Integer.parseInt(countQuery);
                                 if (count == 0) {
-                                    return complete(fetch(urlQuery));
+                                    return completeWithFuture(fetch(urlQuery));
                                 }
 
                                 return redirect(urlQuery, count);

@@ -45,7 +45,7 @@ public class ServiceDiscovery {
                     logger.info("starting reconnect");
                     reconnect();
                 } catch (IOException e) {
-                    logger.error("got state watch error: {}", e);
+                    logger.error("got state watch error:", e);
                 }
             }
         });

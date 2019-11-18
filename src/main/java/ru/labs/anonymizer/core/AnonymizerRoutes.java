@@ -31,7 +31,6 @@ public class AnonymizerRoutes extends AllDirectives {
                                     return fetch(urlQuery);
                                 }
 
-
                                 return redirect(urlQuery, count);
                             })
                         ))

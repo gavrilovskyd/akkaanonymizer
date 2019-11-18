@@ -20,8 +20,8 @@ public class ServiceDiscovery {
     public ServiceDiscovery(String zkAddr, ActorRef addressStorageActor) throws IOException {
         this.zkAddr = zkAddr;
         this.addressStorageActor = addressStorageActor;
-        this.zoo = connect();
-        watchNodes();
+
+        reconnect();
     }
 
     public void register(String addr) throws KeeperException, InterruptedException {

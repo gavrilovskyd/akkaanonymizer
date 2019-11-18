@@ -21,7 +21,6 @@ public class AddressStoreActor extends AbstractActor {
         return ReceiveBuilder.create()
             .match(SetAddressListMessage.class, m -> {
                 hostsStorage = m.getAddrList();
-                hostsStorage.put(m.getAddrName(), m.getAddr());
                 logger.info("added {} with name {}", m.getAddr(), m.getAddrName());
             })
             .match(RemoveAddressMessage.class, m -> {

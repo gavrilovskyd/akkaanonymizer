@@ -13,7 +13,6 @@ public class ServiceDiscovery {
     private static final String REGISTRY_NODE_PATH = REGISTRY_ROOT+"/s";
 
     private ZooKeeper zoo;
-    private ActorRef serversStorageActor;
 
     public ServiceDiscovery(String zkHost, ActorRef serversStorageActor)
         throws IOException, KeeperException, InterruptedException {
@@ -25,7 +24,7 @@ public class ServiceDiscovery {
         this.loadServersList();
     }
 
-    private void loadServersList() throws KeeperException, InterruptedException {
+    private void loadServersList(ActorRef serversStorageActor) throws KeeperException, InterruptedException {
         List<String> servers = zoo.getChildren(REGISTRY_ROOT, false);
         servers.forEach((server) -> {
                 try {

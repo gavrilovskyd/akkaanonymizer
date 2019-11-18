@@ -35,7 +35,7 @@ public class AnonymizerApp {
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = server.routes().flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
             routeFlow, ConnectHttp.toHost(host, port), materializer);
-        
+
         logger.info("Server started at http://{}:{}", host, port);
         System.in.read();
         binding.thenCompose(ServerBinding::unbind)

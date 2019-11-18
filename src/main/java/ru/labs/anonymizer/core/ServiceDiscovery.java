@@ -15,6 +15,6 @@ public class ServiceDiscovery {
     }
 
     public void register(String host) {
-        zoo.create(REGISTRY_NODE_PATH)
+        zoo.create(REGISTRY_NODE_PATH, host.getBytes(), )
     }
 }

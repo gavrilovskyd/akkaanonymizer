@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceDiscovery {
-    private static final Logger logger = LoggerFactory.getLogger(AddressStoreActor.class);
     private static final int SESSION_TIMEOUT = 3000; // ms
     private static final String REGISTRY_ROOT = "/servers";
     private static final String REGISTRY_NODE_PATH = REGISTRY_ROOT + "/s";
+    private static final Logger logger = LoggerFactory.getLogger(AddressStoreActor.class);
 
     private String zkAddr;
     private ZooKeeper zoo;

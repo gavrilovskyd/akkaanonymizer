@@ -33,6 +33,7 @@ public class ServiceDiscovery {
                 try {
                     reconnect();
                 } catch (IOException e) {
+                    // TODO: log error
                     e.printStackTrace();
                 }
             }

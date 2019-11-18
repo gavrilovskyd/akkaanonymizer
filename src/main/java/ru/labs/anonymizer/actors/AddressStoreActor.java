@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class AddressStoreActor extends AbstractActor {
     private String[] addresses;
-    private Logger logger = LoggerFactory.getLogger(AddressStoreActor.class);
+    private static final Logger logger = LoggerFactory.getLogger(AddressStoreActor.class);
 
     @Override
     public Receive createReceive() {

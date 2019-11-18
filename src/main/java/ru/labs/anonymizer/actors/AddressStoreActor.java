@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Random;
 
 public class AddressStoreActor extends AbstractActor {
-    private String[] hostsStorage = {};
+    private String[] hostsStorage;
     private LoggingAdapter logger = Logging.getLogger(getContext().getSystem(), this);
 
     @Override

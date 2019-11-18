@@ -9,8 +9,9 @@ import ru.labs.anonymizer.actors.HostStoreActor;
 public class AnonymizerServer {
     private AnonymizerRoutes routes;
 
-    public AnonymizerServer(ActorSystem system, String host, int port) {
+    public AnonymizerServer(ActorSystem system, String zkHost, String host, int port) {
         ActorRef hostStoreActor = system.actorOf(Props.create(HostStoreActor.class), "host-store");
+        ServiceDiscovery serviceDiscovery = new ServiceDiscovery()
         this.routes = new AnonymizerRoutes(system, hostStoreActor);
     }
 

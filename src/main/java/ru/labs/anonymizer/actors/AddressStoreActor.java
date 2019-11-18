@@ -19,13 +19,13 @@ public class AddressStoreActor extends AbstractActor {
         return ReceiveBuilder.create()
             .match(SetAddressesMessage.class, m -> {
                 addresses = m.getAddresses();
-                logger.info("received new addresses list");
+                logger.debug("received new addresses list");
             })
             .match(GetRandomAddressMessage.class, m -> {
                 getSender().tell(addresses[new Random().nextInt(addresses.length)], getSelf());
                 logger.debug("returned random address");
             })
-            .matchAny(o -> { logger.warning("got unknown message: {}", o.getClass().toString()); })
+            .matchAny(o -> { logger.warn("got unknown message: {}", o.getClass().toString()); })
             .build();
     }
 }

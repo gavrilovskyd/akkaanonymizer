@@ -57,6 +57,7 @@ public class AnonymizerRoutes extends AllDirectives {
     }
 
     private CompletionStage<HttpResponse> fetch(String url) {
+        logger.debug("fetching {}", url);
         return Http.get(system).singleRequest(HttpRequest.create(url));
     }
 

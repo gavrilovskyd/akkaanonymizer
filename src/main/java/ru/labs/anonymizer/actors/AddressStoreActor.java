@@ -12,13 +12,14 @@ import java.util.List;
 import java.util.Random;
 
 public class AddressStoreActor extends AbstractActor {
-    private HashMap<String, String> hostsStorage = new HashMap<>();
+    private List<String> hostsStorage = new HashMap<>();
     private LoggingAdapter logger = Logging.getLogger(getContext().getSystem(), this);
 
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
             .match(SetAddressListMessage.class, m -> {
+
                 hostsStorage.put(m.getAddrName(), m.getAddr());
                 logger.info("added {} with name {}", m.getAddr(), m.getAddrName());
             })

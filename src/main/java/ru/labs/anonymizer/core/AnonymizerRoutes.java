@@ -3,6 +3,7 @@ package ru.labs.anonymizer.core;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.http.javadsl.Http;
+import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
 
@@ -24,7 +25,7 @@ public class AnonymizerRoutes extends AllDirectives {
                             parameter("count", (countQuery)-> {
                                 int count = Integer.parseInt(countQuery);
                                 if (count == 0) {
-                                    Http.get(system).singleRequest()
+                                    Http.get(system).singleRequest(HttpRequest.create(urlQuery))
                                 }
                             })
                         ))

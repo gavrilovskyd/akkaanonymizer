@@ -18,6 +18,7 @@ import java.util.concurrent.CompletionStage;
 
 public class AnonymizerRoutes extends AllDirectives {
     private static final Duration TIMEOUT = Duration.ofMillis(5000); // ms
+    private static final String HTTP_METHOD_NAME = "go";
 
     private ActorRef addrStoreActor;
     private ActorSystem system;
@@ -29,7 +30,7 @@ public class AnonymizerRoutes extends AllDirectives {
 
     public Route routes() {
         return route(
-            path("go", () ->
+            path(HTTP_METHOD_NAME, () ->
                 route(
                     get(() ->
                         parameter("url", urlQuery ->

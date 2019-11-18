@@ -13,7 +13,7 @@ public class ConfigStoreActor extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
             .match(AddServerMessage.class, m -> {
-                
+                serversStorage.put(m.getServerName(), m.getServerAddr());
             })
             .build();
     }

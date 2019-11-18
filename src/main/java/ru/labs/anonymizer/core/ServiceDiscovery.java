@@ -26,7 +26,7 @@ public class ServiceDiscovery {
            try {
                byte[] addr = zoo.getData(REGISTRY_ROOT+"/"+server, false, null);
                serversStorageActor.tell(
-                   new ChangeServerListMessage(addr, ChangeServerListMessage.EventType.ADD),
+                   new ChangeServerListMessage(new String(addr), ChangeServerListMessage.EventType.ADD),
                    ActorRef.noSender()
                );
            } catch (KeeperException | InterruptedException e) {

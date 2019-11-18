@@ -99,9 +99,4 @@ public class ServiceDiscovery {
         //    );
         //}
     }
-
-    private void loadServersList() throws KeeperException, InterruptedException {
-        List<String> servers = zoo.getChildren(REGISTRY_ROOT, false);
-        ;
-    }
 }

@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class ServiceDiscovery {
     private static final int SESSION_TIMEOUT = 3000; // ms
-    private static final String REGISTRY_
+    private static final String REGISTRY_NODE_PATH = "/"
 
     private ZooKeeper zoo;
 

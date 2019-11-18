@@ -29,7 +29,6 @@ public class AnonymizerApp {
         int port = Integer.parseInt(args[2]);
 
         BasicConfigurator.configure();
-
         ActorSystem system = ActorSystem.create("anonymizer-system");
 
         final Http http = Http.get(system);

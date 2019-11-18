@@ -29,4 +29,8 @@ public class AnonymizerServer {
     public Route routes() {
         return routes.routes();
     }
+
+    public void stop() {
+        this.serviceDiscovery.stop();
+    }
 }

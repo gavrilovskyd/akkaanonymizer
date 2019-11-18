@@ -11,7 +11,11 @@ public class AnonymizerRoutes extends AllDirectives {
             path("go", () ->
                 route(
                     get(() ->
-                        parameter("url", ))
+                        parameter("url", (url) -> {
+                            parameter("count", (count)-> {
+                                
+                            })
+                        }))
                 ))
         )
     }

@@ -6,7 +6,7 @@ import akka.japi.pf.ReceiveBuilder;
 import java.util.HashMap;
 
 public class ConfigStoreActor extends AbstractActor {
-    private HashMap<String, String> serversStorage = new H
+    private HashMap<String, String> serversStorage = new HashMap<>();
 
     @Override
     public Receive createReceive() {

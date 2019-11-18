@@ -31,9 +31,9 @@ public class ServiceDiscovery {
            }
 
            serversStorageActor.tell(
-                   new ChangeServerListMessage(addr, ChangeServerListMessage.EventType.ADD),
-                   ActorRef.noSender()
-               )
+               new ChangeServerListMessage(addr, ChangeServerListMessage.EventType.ADD),
+               ActorRef.noSender()
+           );
            }
        );
     }

@@ -23,8 +23,8 @@ public class AddressStoreActor extends AbstractActor {
                 logger.info("added {} with name {}", m.getAddr(), m.getAddrName());
             })
             .match(RemoveAddressMessage.class, m -> {
-                hostsStorage.remove(m.getAddrName())
-                logger.info("remove {} with name {}", m.getAddr(), m.getAddrName());
+                hostsStorage.remove(m.getAddrName());
+                logger.info("remove server with name {} ", m.getAddrName());
             })
             .match(GetRandomAddressMessage.class, m -> {
                 Object[] servers = hostsStorage.values().toArray();

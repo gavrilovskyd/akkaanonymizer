@@ -14,7 +14,7 @@ public class AnonymizerServer {
         this.routes = new AnonymizerRoutes(system, hostStoreActor);
     }
 
-    public Route createRoute() {
+    public Route routes() {
         return routes.routes();
     }
 }

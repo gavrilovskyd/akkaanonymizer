@@ -11,6 +11,6 @@ public class AnonymizerRoutes extends AllDirectives {
             path("go", () -> route(
                     get()
             ))
-        )
+        );
     }
 }

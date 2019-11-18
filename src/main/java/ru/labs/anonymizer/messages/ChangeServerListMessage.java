@@ -6,6 +6,7 @@ public class ChangeServerListMessage {
         REMOVE
     };
 
+    private String serverName
     private String serverAddr;
     private EventType type;
 

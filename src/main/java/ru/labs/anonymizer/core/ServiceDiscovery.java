@@ -30,6 +30,8 @@ public class ServiceDiscovery {
                     // TODO: log message
                     e.printStackTrace();
                 }
+            } else if (watchedEvent.getType() == Watcher.Event.EventType.NodeDeleted) {
+                
             }
         });
 

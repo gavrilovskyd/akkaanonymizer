@@ -5,8 +5,7 @@ import java.util.List;
 public class SetAddressListMessage {
     private String[] addrList;
 
-    public SetAddressListMessage(List<String> addrList) {
-        ;
+    public SetAddressListMessage(String[] addrList) {
         this.addrList = addrList;
     }
 

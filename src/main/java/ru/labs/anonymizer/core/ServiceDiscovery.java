@@ -21,7 +21,7 @@ public class ServiceDiscovery {
             REGISTRY_NODE_PATH,
             host.getBytes(),
             ZooDefs.Ids.OPEN_ACL_UNSAFE,
-            CreateMode.EPHEMERAL_SEQUENTIAL,
+            CreateMode.EPHEMERAL_SEQUENTIAL
             );
     }
 }

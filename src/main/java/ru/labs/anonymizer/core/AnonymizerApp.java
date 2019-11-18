@@ -26,7 +26,7 @@ public class AnonymizerApp {
 
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
-        AnonymizerServer server = new AnonymizerServer(system, host, port);
+        AnonymizerServer server = new AnonymizerServer(system, zkAddr, host, port);
 
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = server.routes().flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(

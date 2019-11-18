@@ -15,12 +15,12 @@ public class ServiceDiscovery {
     private ZooKeeper zoo;
     private ActorRef hostStorageActor;
 
-    public ServiceDiscovery(String zkHost, ActorRef serversStorageActor)
+    public ServiceDiscovery(String zkHost, ActorRef hostStorageActor)
         throws IOException, KeeperException, InterruptedException {
-        this.hostStorageActor = serversStorageActor;
+        this.hostStorageActor = hostStorageActor;
         this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT, this::watchEvents);
 
-        this.loadServersList(serversStorageActor);
+        this.loadServersList(hostStorageActor);
     }
 
     private void watchEvents(WatchedEvent watchedEvent) {

@@ -10,7 +10,7 @@ import ru.labs.anonymizer.messages.SetAddressesMessage;
 import java.util.Random;
 
 public class AddressStoreActor extends AbstractActor {
-    private String[] addressStorage;
+    private String[] addresses;
     private LoggingAdapter logger = Logging.getLogger(getContext().getSystem(), this);
 
     @Override

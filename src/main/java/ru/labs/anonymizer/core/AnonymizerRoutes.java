@@ -13,7 +13,7 @@ public class AnonymizerRoutes extends AllDirectives {
                     get(() ->
                         parameter("url", (url) ->
                             parameter("count", (count)-> {
-                                return null; // TODO: add logic
+                                
                             })
                         ))
                 ))

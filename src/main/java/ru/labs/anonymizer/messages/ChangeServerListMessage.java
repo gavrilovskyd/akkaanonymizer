@@ -11,6 +11,7 @@ public class ChangeServerListMessage {
     private EventType type;
 
     public ChangeServerListMessage(String serverName, String serverAddr, EventType type) {
+        this.serverName = serverName;
         this.serverAddr = serverAddr;
         this.type = type;
     }

@@ -10,6 +10,7 @@ import akka.http.javadsl.model.HttpResponse;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 
+import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,6 +27,8 @@ public class AnonymizerApp {
         String zkAddr = args[0];
         String host = args[1];
         int port = Integer.parseInt(args[2]);
+
+        BasicConfigurator.configure();
 
         ActorSystem system = ActorSystem.create("anonymizer-system");
 

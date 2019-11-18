@@ -19,12 +19,12 @@ import java.util.concurrent.CompletionStage;
 public class AnonymizerRoutes extends AllDirectives {
     private static final Duration TIMEOUT = Duration.ofMillis(5000); // ms
 
-    private ActorRef hostStoreActor;
+    private ActorRef addrStoreActor;
     private ActorSystem system;
 
     public AnonymizerRoutes(ActorSystem system, ActorRef hostStoreActor) {
         this.system = system;
-        this.hostStoreActor = hostStoreActor;
+        this.addrStoreActor = hostStoreActor;
     }
 
     public Route routes() {
@@ -51,12 +51,11 @@ public class AnonymizerRoutes extends AllDirectives {
     }
 
     private CompletionStage<HttpResponse> redirect(String url, int count) {
-        return Patterns.ask(hostStoreActor, new GetRandomAddressMessage(), TIMEOUT)
+        return Patterns.ask(addrStoreActor, new GetRandomAddressMessage(), TIMEOUT)
             .thenCompose(hostParam -> {
                 String host = ((String) hostParam);
                 Uri redirectUri = Uri.create("go")
-                    .scheme("http")
-                    .host(host)
+                    .
                     .query(Query.create(Pair.create("url", url)))
                     .query(Query.create(Pair.create("count", Integer.toString(count - 1))));
                 return fetch(redirectUri.toString());

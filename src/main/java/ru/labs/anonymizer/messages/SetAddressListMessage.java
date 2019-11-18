@@ -3,7 +3,7 @@ package ru.labs.anonymizer.messages;
 import java.util.List;
 
 public class SetAddressListMessage {
-    private List<String> addrList;
+    private String[] addrList;
 
     public SetAddressListMessage(List<String> addrList) {
         this.addrList = addrList;

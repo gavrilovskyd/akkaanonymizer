@@ -5,6 +5,7 @@ import akka.event.Logging;
 import akka.event.LoggingAdapter;
 import akka.japi.pf.ReceiveBuilder;
 import ru.labs.anonymizer.messages.GetRandomAddressMessage;
+import ru.labs.anonymizer.messages.SetAddressListMessage;
 
 import java.util.HashMap;
 import java.util.List;

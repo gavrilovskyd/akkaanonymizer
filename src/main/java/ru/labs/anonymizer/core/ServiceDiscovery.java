@@ -1,5 +1,6 @@
 package ru.labs.anonymizer.core;
 
+import akka.actor.ActorRef;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooDefs;
@@ -13,7 +14,7 @@ public class ServiceDiscovery {
 
     private ZooKeeper zoo;
 
-    public ServiceDiscovery(String zkHost) throws IOException {
+    public ServiceDiscovery(String zkHost, ActorRef serversStorageActor) throws IOException {
         this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT, watchedEvent -> {});
     }
 

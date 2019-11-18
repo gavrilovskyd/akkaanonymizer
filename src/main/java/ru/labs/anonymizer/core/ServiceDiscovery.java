@@ -27,7 +27,7 @@ public class ServiceDiscovery {
     }
 
     private ZooKeeper connect() {
-        this.zoo = new ZooKeeper(zkAddr, SESSION_TIMEOUT, this::watchEvents);
+        zoo = new ZooKeeper(zkAddr, SESSION_TIMEOUT, this::watchEvents);
     }
 
     public void register(String addr) throws KeeperException, InterruptedException {

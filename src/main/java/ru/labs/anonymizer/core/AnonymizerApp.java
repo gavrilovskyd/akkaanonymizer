@@ -19,7 +19,7 @@ public class AnonymizerApp {
             System.exit(-1);
         }
         String host = args[0];
-        String port = Integer.parseInt(args[1]);
+        int port = Integer.parseInt(args[1]);
 
         ActorSystem system = ActorSystem.create("anonymizer-system");
 

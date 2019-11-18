@@ -30,7 +30,8 @@ public class ServiceDiscovery {
         List<String> servers = zoo.getChildren(REGISTRY_ROOT, false);
         servers.forEach((server) -> {
                 try {
-                    byte[] addr = zoo.getData(REGISTRY_ROOT+"/"+server, false, null);
+                    String serverPath = REGISTRY_ROOT+"/"+server;
+                    byte[] addr = zoo.getData(serverPath, false, null);
                     serversStorageActor.tell(
                         new ChangeServerListMessage(new String(addr), ChangeServerListMessage.EventType.ADD),
                         ActorRef.noSender()

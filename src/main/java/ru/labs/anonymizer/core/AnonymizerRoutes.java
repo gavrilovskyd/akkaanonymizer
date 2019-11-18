@@ -2,6 +2,7 @@ package ru.labs.anonymizer.core;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
+import akka.event.LoggingAdapter;
 import akka.http.javadsl.Http;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
@@ -24,6 +25,7 @@ public class AnonymizerRoutes extends AllDirectives {
 
     private ActorRef addrStoreActor;
     private ActorSystem system;
+    private LoggingAdapter logger;
 
     public AnonymizerRoutes(ActorSystem system, ActorRef addrStoreActor) {
         this.system = system;

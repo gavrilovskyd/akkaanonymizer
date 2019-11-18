@@ -5,16 +5,11 @@ import java.util.List;
 public class SetAddressListMessage {
     private List<String> addrList;
 
-    public SetAddressListMessage(String addrName, String addr) {
-        this.addrName = addrName;
-        this.addr = addr;
+    public SetAddressListMessage(List<String> addrList) {
+        this.addrList = addrList;
     }
 
-    public String getAddrName() {
-        return addrName;
-    }
-
-    public String getAddr() {
-        return addr;
+    public List<String> getAddrList() {
+        return addrList;
     }
 }

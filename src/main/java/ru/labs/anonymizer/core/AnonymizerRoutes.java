@@ -53,9 +53,9 @@ public class AnonymizerRoutes extends AllDirectives {
     private CompletionStage<HttpResponse> redirect(String url, int count) {
         return Patterns.ask(addrStoreActor, new GetRandomAddressMessage(), TIMEOUT)
             .thenCompose(addrParam -> {
-                String host = ((String) hostParam);
-                Uri redirectUri = Uri.create("go")
-                    .
+                String addr = ((String) addrParam);
+                Uri redirectUri = Uri.create(addr)
+                    .addPathSegment("go")
                     .query(Query.create(Pair.create("url", url)))
                     .query(Query.create(Pair.create("count", Integer.toString(count - 1))));
                 return fetch(redirectUri.toString());

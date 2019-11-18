@@ -55,15 +55,15 @@ public class ServiceDiscovery {
 
     private void watchNodes() {
         try {
-            List<String> serverNodeName = zoo.getChildren(REGISTRY_ROOT, watchedEvent -> {
+            List<String> serverNodeNames = zoo.getChildren(REGISTRY_ROOT, watchedEvent -> {
                 if (watchedEvent.getType() == Watcher.Event.EventType.NodeChildrenChanged) {
                     watchNodes();
                 }
             });
 
             List<String> addresses = new ArrayList<>();
-            for (String server : servers) {
-                byte[] addr = zoo.getData(REGISTRY_ROOT + "/" + server, false, null);
+            for (String nodeName : serverNodeNames) {
+                byte[] addr = zoo.getData(REGISTRY_ROOT + "/" + nodeName, false, null);
             });
         } catch (KeeperException | InterruptedException e) {
             e.printStackTrace();

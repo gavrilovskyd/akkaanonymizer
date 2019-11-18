@@ -13,9 +13,7 @@ public class AnonymizerRoutes extends AllDirectives {
                     get(() ->
                         parameter("url", (url) ->
                             parameter("count", (count)-> {
-                                int countParam = Integer.parseInt(
-                                    httpRequest.getUri().query().getOrElse(COUNT_PARAMETER_NAME, COUNT_DEFAULT_VALUE)
-                                );
+                                int countParam = Integer.parseInt(count);
                             })
                         ))
                 ))

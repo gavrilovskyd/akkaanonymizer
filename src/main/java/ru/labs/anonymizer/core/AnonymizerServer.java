@@ -31,6 +31,10 @@ public class AnonymizerServer {
     }
 
     public void stop() {
-        this.serviceDiscovery.stop();
+        try {
+            this.serviceDiscovery.stop();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -32,6 +32,7 @@ public class AnonymizerRoutes extends AllDirectives {
                                 }
 
 
+
                             })
                         ))
                 ))
@@ -40,5 +41,9 @@ public class AnonymizerRoutes extends AllDirectives {
 
     private CompletionStage<HttpResponse> fetch(String url) {
         return Http.get(system).singleRequest(HttpRequest.create(url));
+    }
+
+    private CompletionStage<HttpResponse> redirect(String url, int count) {
+        
     }
 }

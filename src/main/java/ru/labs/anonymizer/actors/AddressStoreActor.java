@@ -19,7 +19,7 @@ public class AddressStoreActor extends AbstractActor {
                 hostsStorage.put(m.getAddrName(), m.getAddr())
             )
             .match(RemoveAddressMessage.class, m ->
-                hostsStorage.remove(m.getHostName())
+                hostsStorage.remove(m.getAddrName())
             )
             .match(GetRandomAddressMessage.class, m -> {
                 Object[] servers = hostsStorage.values().toArray();

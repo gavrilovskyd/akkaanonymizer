@@ -64,8 +64,7 @@ public class ServiceDiscovery {
             List<String> addresses = new ArrayList<>();
             servers.forEach((server) -> {
                 byte[] addr = zoo.getData(REGISTRY_ROOT + "/" + server, false, null);
-                }
-            );
+            });
         } catch (KeeperException | InterruptedException e) {
             e.printStackTrace();
         }

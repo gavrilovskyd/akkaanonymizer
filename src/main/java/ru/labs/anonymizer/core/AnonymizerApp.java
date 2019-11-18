@@ -15,7 +15,8 @@ import java.util.concurrent.CompletionStage;
 public class AnonymizerApp {
     public static void main(String[] args) throws Exception {
         if (args.length != 2) {
-            
+            System.err.println("Usage: AnonymizerApp <host> <port>");
+            System.exit(-1);
         }
 
         ActorSystem system = ActorSystem.create("anonymizer-system");

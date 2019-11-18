@@ -2,6 +2,7 @@ package ru.labs.anonymizer.core;
 
 import akka.actor.ActorRef;
 import org.apache.zookeeper.*;
+import ru.labs.anonymizer.messages.ChangeServerListMessage;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,10 +18,11 @@ public class ServiceDiscovery {
     public ServiceDiscovery(String zkHost, ActorRef serversStorageActor)
         throws IOException, KeeperException, InterruptedException {
         this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT, watchedEvent -> {
-            serversStorageActor.tell();
+
         });
 
        List<String> servers = zoo.getChildren(REGISTRY_ROOT, false);
+       servers.forEach((addr) -> serversStorageActor.tell(new ChangeServerListMessage(addr, ChangeServerListMessage.EventType.ADD)));
     }
 
     public void register(String host) throws KeeperException, InterruptedException {

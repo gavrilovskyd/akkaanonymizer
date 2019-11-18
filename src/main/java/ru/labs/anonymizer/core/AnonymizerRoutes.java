@@ -29,8 +29,8 @@ public class AnonymizerRoutes extends AllDirectives {
             path("go", () ->
                 route(
                     get(() ->
-                        parameter("url", (urlQuery) ->
-                            parameter("count", (countQuery)-> {
+                        parameter("url", urlQuery ->
+                            parameter("count", countQuery-> {
                                 int count = Integer.parseInt(countQuery);
                                 if (count == 0) {
                                     return completeWithFuture(fetch(urlQuery));

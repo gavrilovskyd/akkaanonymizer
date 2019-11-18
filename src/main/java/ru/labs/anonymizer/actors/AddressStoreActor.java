@@ -9,6 +9,7 @@ import ru.labs.anonymizer.messages.GetRandomAddressMessage;
 import ru.labs.anonymizer.messages.RemoveAddressMessage;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 public class AddressStoreActor extends AbstractActor {

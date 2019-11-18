@@ -42,9 +42,7 @@ public class ServiceDiscovery {
 
     private void reconnect() throws IOException, KeeperException, InterruptedException {
         zoo = connect();
-        if (zoo != null) {
-            watchNodes();
-        }
+        watchNodes();
     }
 
     public void register(String addr) throws KeeperException, InterruptedException {

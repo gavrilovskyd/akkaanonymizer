@@ -37,6 +37,10 @@ public class ServiceDiscovery {
        );
     }
 
+    private void loadServersList() {
+        
+    }
+
     public void register(String host) throws KeeperException, InterruptedException {
         zoo.create(
             REGISTRY_NODE_PATH,

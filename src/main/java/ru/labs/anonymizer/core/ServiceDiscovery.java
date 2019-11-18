@@ -23,7 +23,11 @@ public class ServiceDiscovery {
 
        List<String> servers = zoo.getChildren(REGISTRY_ROOT, false);
        servers.forEach((addr) ->
-           serversStorageActor.tell(new ChangeServerListMessage(addr, ChangeServerListMessage.EventType.ADD), ActorRef.noSender()));
+           serversStorageActor.tell(
+               new ChangeServerListMessage(addr, ChangeServerListMessage.EventType.ADD),
+               ActorRef.noSender()
+           )
+       );
     }
 
     public void register(String host) throws KeeperException, InterruptedException {

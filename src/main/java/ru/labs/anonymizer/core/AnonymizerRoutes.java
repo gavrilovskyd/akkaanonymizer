@@ -4,8 +4,11 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.http.javadsl.Http;
 import akka.http.javadsl.model.HttpRequest;
+import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
+
+import java.util.concurrent.CompletionStage;
 
 public class AnonymizerRoutes extends AllDirectives {
     private ActorRef hostStoreActor;
@@ -28,10 +31,14 @@ public class AnonymizerRoutes extends AllDirectives {
                                     return Http.get(system).singleRequest(HttpRequest.create(urlQuery));
                                 }
 
-                                
+
                             })
                         ))
                 ))
         );
+    }
+
+    private CompletionStage<HttpResponse> fetch(String url) {
+        return Http.get(system).singleRequest(HttpRequest.create(urlQuery));
     }
 }

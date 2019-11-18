@@ -1,4 +1,3 @@
 package ru.labs.anonymizer.messages;
 
-public class GetRandomServer {
-}
+public class GetRandomServer {}

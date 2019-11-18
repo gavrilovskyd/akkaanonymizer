@@ -10,5 +10,6 @@ public class AnonymizerServer {
 
     public AnonymizerServer(ActorSystem system) {
         ActorRef hostStoreActor = system.actorOf(Props.create(HostStoreActor.class), "host-store");
+        this.routes = new AnonymizerRoutes(system, hostStoreActor);
     }
 }

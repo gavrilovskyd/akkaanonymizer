@@ -68,7 +68,6 @@ public class AnonymizerRoutes extends AllDirectives {
                 Uri redirectUri = Uri.create(addr)
                     .addPathSegment(HTTP_METHOD_NAME)
                     .query(Query.create(Pair.create(URL_PARAM_NAME, url), Pair.create(COUNT_NAME, Integer.toString(count - 1))));
-                    .query(Query.create());
                 return fetch(redirectUri.toString());
             });
     }

@@ -13,7 +13,8 @@ public class ServiceDiscovery {
 
     private ZooKeeper zoo;
 
-    public ServiceDiscovery(String zkHost, ActorRef serversStorageActor) throws IOException {
+    public ServiceDiscovery(String zkHost, ActorRef serversStorageActor)
+        throws IOException, KeeperException, InterruptedException {
         this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT, watchedEvent -> {
 
         });

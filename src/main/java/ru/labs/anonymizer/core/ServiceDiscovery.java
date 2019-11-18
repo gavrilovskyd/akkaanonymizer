@@ -11,7 +11,7 @@ import java.util.List;
 public class ServiceDiscovery {
     private static final int SESSION_TIMEOUT = 3000; // ms
     private static final String REGISTRY_ROOT = "/servers";
-    private static final String REGISTRY_NODE_PATH = REGISTRY_ROOT+"/s";
+    private static final String REGISTRY_NODE_PATH = REGISTRY_ROOT + "/s";
 
     private String zkAddr;
     private ZooKeeper zoo;
@@ -63,7 +63,7 @@ public class ServiceDiscovery {
 
             servers.forEach((server) -> {
                     try {
-                        String serverPath = REGISTRY_ROOT+"/"+server;
+                        String serverPath = REGISTRY_ROOT + "/" + server;
                         byte[] addr = zoo.getData(serverPath, false, null);
                         addressStorageActor.tell(
                             new AddAddressMessage(serverPath, new String(addr)),

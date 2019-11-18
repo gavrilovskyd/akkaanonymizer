@@ -1,5 +1,6 @@
 package ru.labs.anonymizer.core;
 
+import akka.actor.Actor;
 import akka.actor.ActorRef;
 import org.apache.zookeeper.*;
 import ru.labs.anonymizer.messages.ChangeServerListMessage;
@@ -13,6 +14,7 @@ public class ServiceDiscovery {
     private static final String REGISTRY_NODE_PATH = REGISTRY_ROOT+"/s";
 
     private ZooKeeper zoo;
+    private ActorRef serversStorageActor;
 
     public ServiceDiscovery(String zkHost, ActorRef serversStorageActor)
         throws IOException, KeeperException, InterruptedException {
@@ -43,7 +45,7 @@ public class ServiceDiscovery {
     }
 
     private void watchEvents(ActorRef serversStorageActor) {
-        
+
     }
 
     private void loadServersList(ActorRef serversStorageActor) throws KeeperException, InterruptedException {

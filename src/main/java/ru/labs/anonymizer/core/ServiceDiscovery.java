@@ -74,7 +74,7 @@ public class ServiceDiscovery {
                         e.printStackTrace();
                     }
                 }
-            )
+            );
         } catch (KeeperException | InterruptedException e) {
             e.printStackTrace();
         }

@@ -7,12 +7,13 @@ import akka.japi.pf.ReceiveBuilder;
 import ru.labs.anonymizer.messages.GetRandomAddressMessage;
 import ru.labs.anonymizer.messages.SetAddressListMessage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
 public class AddressStoreActor extends AbstractActor {
-    private List<String> hostsStorage = new HashMap<>();
+    private List<String> hostsStorage = new ArrayList<>();
     private LoggingAdapter logger = Logging.getLogger(getContext().getSystem(), this);
 
     @Override

@@ -42,7 +42,7 @@ public class ServiceDiscovery {
             if (watchedEvent.getState() == Watcher.Event.KeeperState.Expired
                 || watchedEvent.getState() == Watcher.Event.KeeperState.Disconnected) {
                 try {
-                    logger.info("starting reconnect");
+                    logger.info("got {} signal: starting reconnect", watchedEvent.getState().toString());
                     reconnect();
                 } catch (IOException e) {
                     logger.error("got state watch error:", e);

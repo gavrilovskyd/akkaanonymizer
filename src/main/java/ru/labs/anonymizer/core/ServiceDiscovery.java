@@ -55,9 +55,9 @@ public class ServiceDiscovery {
     }
 
     private void watchNodes() {
-        try {
         zoo.getChildren(REGISTRY_ROOT, watchedEvent -> {
             System.out.println(watchedEvent.toString());
+
         });
 
 

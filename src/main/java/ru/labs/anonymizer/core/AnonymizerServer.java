@@ -13,13 +13,14 @@ public class AnonymizerServer {
     private final static String SCHEME = "http";
 
     private AnonymizerRoutes routes;
+    private ServiceDiscovery serviceDiscovery;
 
     public AnonymizerServer(ActorSystem system, String zkHost, String host, int port)
         throws InterruptedException, IOException, KeeperException {
 
         ActorRef hostStoreActor = system.actorOf(Props.create(AddressStoreActor.class), "host-store");
-        ServiceDiscovery serviceDiscovery = new ServiceDiscovery(zkHost, hostStoreActor);
-        serviceDiscovery.register(SCHEME + "://" +host+":"+port);
+        this.serviceDiscovery = new ServiceDiscovery(zkHost, hostStoreActor);
+        this.serviceDiscovery.register(SCHEME + "://" +host+":"+port);
 
         this.routes = new AnonymizerRoutes(system, hostStoreActor);
     }

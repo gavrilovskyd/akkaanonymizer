@@ -52,7 +52,7 @@ public class AnonymizerRoutes extends AllDirectives {
         return Patterns.ask(hostStoreActor, new GetRandomHostMessage(), TIMEOUT)
             .thenCompose(serverNameParam -> {
                 String serverName = ((String) serverNameParam);
-                Uri.create(url).addPathSegment("")
+                Uri.create(url).addPathSegment("go")
             });
     }
 }

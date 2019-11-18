@@ -4,6 +4,7 @@ import akka.actor.ActorRef;
 import org.apache.zookeeper.*;
 
 import java.io.IOException;
+import java.util.List;
 
 public class ServiceDiscovery {
     private static final int SESSION_TIMEOUT = 3000; // ms

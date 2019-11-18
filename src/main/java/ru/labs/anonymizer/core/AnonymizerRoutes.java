@@ -7,6 +7,8 @@ public class AnonymizerRoutes extends AllDirectives {
     public AnonymizerRoutes() {}
 
     public Route route() {
+        return route(
 
+        )
     }
 }

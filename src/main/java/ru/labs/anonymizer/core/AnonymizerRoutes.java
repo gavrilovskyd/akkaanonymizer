@@ -59,6 +59,7 @@ public class AnonymizerRoutes extends AllDirectives {
                     .host(host)
                     .query(Query.create(Pair.create("url", url)))
                     .query(Query.create(Pair.create("count", Integer.toString(count - 1))));
+                return fetch(redirectUri.toString());
             });
     }
 }

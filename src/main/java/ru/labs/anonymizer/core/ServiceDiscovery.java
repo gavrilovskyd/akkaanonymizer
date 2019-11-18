@@ -17,7 +17,7 @@ public class ServiceDiscovery {
         this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT, watchedEvent -> {});
     }
 
-    public void register(String host) throws InterruptedException {
+    public void register(String host) throws KeeperException, InterruptedException {
         zoo.create(
             REGISTRY_NODE_PATH,
             host.getBytes(),

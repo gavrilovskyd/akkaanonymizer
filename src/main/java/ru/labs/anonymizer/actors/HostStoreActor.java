@@ -7,6 +7,7 @@ import ru.labs.anonymizer.messages.GetRandomHostMessage;
 import ru.labs.anonymizer.messages.RemoveHostMessage;
 
 import java.util.HashMap;
+import java.util.Random;
 
 public class HostStoreActor extends AbstractActor {
     private HashMap<String, String> hostsStorage = new HashMap<>();
@@ -22,7 +23,7 @@ public class HostStoreActor extends AbstractActor {
             )
             .match(GetRandomHostMessage.class, m -> {
                 Object[] servers = hostsStorage.values().toArray();
-                getSender().tell(servers[]);
+                getSender().tell(servers[new Random().nextInt(servers.length)]);
             })
             .build();
     }

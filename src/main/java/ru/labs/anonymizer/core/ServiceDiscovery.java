@@ -13,11 +13,11 @@ public class ServiceDiscovery {
     private static final String REGISTRY_NODE_PATH = REGISTRY_ROOT+"/s";
 
     private ZooKeeper zoo;
-    private ActorRef serversStorageActor;
+    private ActorRef hostStorageActor;
 
     public ServiceDiscovery(String zkHost, ActorRef serversStorageActor)
         throws IOException, KeeperException, InterruptedException {
-        this.serversStorageActor = serversStorageActor;
+        this.hostStorageActor = serversStorageActor;
         this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT, this::watchEvents);
 
         this.loadServersList(serversStorageActor);
@@ -28,7 +28,7 @@ public class ServiceDiscovery {
         if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
             try {
                 byte[] addr = zoo.getData(eventPath, false, null);
-                serversStorageActor.tell(
+                hostStorageActor.tell(
                     new AddHostMessage(eventPath, new String(addr),
                         AddHostMessage.EventType.ADD),
                     ActorRef.noSender()
@@ -38,7 +38,7 @@ public class ServiceDiscovery {
                 e.printStackTrace();
             }
         } else if (watchedEvent.getType() == Watcher.Event.EventType.NodeDeleted) {
-            serversStorageActor.tell(
+            hostStorageActor.tell(
                 new AddHostMessage(eventPath, "",
                     AddHostMessage.EventType.REMOVE),
                 ActorRef.noSender()

@@ -10,6 +10,8 @@ import ru.labs.anonymizer.actors.HostStoreActor;
 import java.io.IOException;
 
 public class AnonymizerServer {
+    private final static String SCHEME = "http";
+
     private AnonymizerRoutes routes;
     private ServiceDiscovery serviceDiscovery;
 

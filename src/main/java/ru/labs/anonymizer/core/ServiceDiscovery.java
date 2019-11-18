@@ -42,6 +42,9 @@ public class ServiceDiscovery {
 
     private void reconnect() throws IOException {
         zoo = connect();
+        if (zoo != null) {
+            watchNodes();
+        }
     }
 
     public void register(String addr) throws KeeperException, InterruptedException {
@@ -53,7 +56,7 @@ public class ServiceDiscovery {
         );
     }
 
-    private void watchNodes() {
+    private void watchNodes() throws KeeperException, InterruptedException {
         zoo.getChildren(REGISTRY_ROOT, watchedEvent -> {
             System.out.println(watchedEvent.toString());
         });

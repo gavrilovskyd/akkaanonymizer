@@ -24,7 +24,7 @@ public class ServiceDiscovery {
        List<String> servers = zoo.getChildren(REGISTRY_ROOT, false);
        servers.forEach((addr) -> {
            try {
-               zoo.getData(REGISTRY_ROOT+"/"+addr, false, null);
+               byte[] addr = zoo.getData(REGISTRY_ROOT+"/"+addr, false, null);
            } catch (KeeperException | InterruptedException e) {
                // TODO: log message
                e.printStackTrace();

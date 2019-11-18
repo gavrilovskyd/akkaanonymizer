@@ -17,7 +17,7 @@ public class ServiceDiscovery {
     public ServiceDiscovery(String zkHost, ActorRef serversStorageActor)
         throws IOException, KeeperException, InterruptedException {
         this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT, watchedEvent -> {
-
+            serversStorageActor.tell();
         });
 
        List<String> servers = zoo.getChildren(REGISTRY_ROOT, false);

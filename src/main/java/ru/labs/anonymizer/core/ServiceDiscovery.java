@@ -25,6 +25,15 @@ public class ServiceDiscovery {
         watchNodes();
     }
 
+    public void register(String addr) throws KeeperException, InterruptedException {
+        zoo.create(
+            REGISTRY_NODE_PATH,
+            addr.getBytes(),
+            ZooDefs.Ids.OPEN_ACL_UNSAFE,
+            CreateMode.EPHEMERAL_SEQUENTIAL
+        );
+    }
+
     private ZooKeeper connect() throws IOException {
         return new ZooKeeper(zkAddr, SESSION_TIMEOUT, watchedEvent -> {
             if (watchedEvent.getState() == Watcher.Event.KeeperState.Expired
@@ -42,15 +51,6 @@ public class ServiceDiscovery {
     private void reconnect() throws IOException {
         zoo = connect();
         watchNodes();
-    }
-
-    public void register(String addr) throws KeeperException, InterruptedException {
-        zoo.create(
-            REGISTRY_NODE_PATH,
-            addr.getBytes(),
-            ZooDefs.Ids.OPEN_ACL_UNSAFE,
-            CreateMode.EPHEMERAL_SEQUENTIAL
-        );
     }
 
     private void watchNodes() {

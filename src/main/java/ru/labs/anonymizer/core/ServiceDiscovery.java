@@ -8,7 +8,7 @@ import ru.labs.anonymizer.messages.ChangeServerListMessage;
 import java.io.IOException;
 import java.util.List;
 
-public class ServiceDiscovery {
+public class ServiceDiscovery implements Watcher {
     private static final int SESSION_TIMEOUT = 3000; // ms
     private static final String REGISTRY_ROOT = "/servers";
     private static final String REGISTRY_NODE_PATH = REGISTRY_ROOT+"/s";

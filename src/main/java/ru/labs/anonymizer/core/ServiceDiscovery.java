@@ -19,6 +19,7 @@ public class ServiceDiscovery {
 
     public ServiceDiscovery(String zkAddr, ActorRef addressStorageActor)
         throws IOException, KeeperException, InterruptedException {
+        this.zkAddr = zkAddr;
         this.addressStorageActor = addressStorageActor;
         this.zoo = new ZooKeeper(zkAddr, SESSION_TIMEOUT, this::watchEvents);
 

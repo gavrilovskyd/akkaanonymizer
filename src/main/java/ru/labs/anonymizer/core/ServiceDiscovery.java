@@ -56,7 +56,7 @@ public class ServiceDiscovery {
     private void watchNodes() {
         zoo.getChildren(REGISTRY_ROOT, watchedEvent -> {
             System.out.println(watchedEvent.toString());
-        })
+        });
 
 
         String eventPath = watchedEvent.getPath();

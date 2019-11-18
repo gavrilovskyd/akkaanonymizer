@@ -33,7 +33,7 @@ public class ServiceDiscovery {
             } else if (watchedEvent.getType() == Watcher.Event.EventType.NodeDeleted) {
                 serversStorageActor.tell(
                     new ChangeServerListMessage(eventPath, "",
-                        ChangeServerListMessage.EventType.ADD),
+                        ChangeServerListMessage.EventType.REMOVE),
                     ActorRef.noSender()
                 );
             }

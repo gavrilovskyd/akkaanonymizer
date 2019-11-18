@@ -36,7 +36,7 @@ public class AnonymizerApp {
 
         Logger logger = LoggerFactory.getLogger(AnonymizerApp.class);
         logger.info("Server started at http://{}:{}", host, port);
-        System.out.println();
+
         System.in.read();
         binding.thenCompose(ServerBinding::unbind)
             .thenAccept(unbound -> system.terminate());

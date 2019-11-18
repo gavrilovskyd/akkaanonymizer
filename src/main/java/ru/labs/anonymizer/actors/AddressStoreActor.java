@@ -23,6 +23,7 @@ public class AddressStoreActor extends AbstractActor {
             })
             .match(GetRandomAddressMessage.class, m -> {
                 getSender().tell(addresses[new Random().nextInt(addresses.length)], getSelf());
+                logger.debug("returned random address");
             })
             .matchAny(o -> { logger.warning("got unknown message: {}", o.getClass().toString()); })
             .build();

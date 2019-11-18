@@ -60,7 +60,6 @@ public class ServiceDiscovery {
 
 
         String eventPath = watchedEvent.getPath();
-
         if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
             try {
                 byte[] addr = zoo.getData(eventPath, false, null);

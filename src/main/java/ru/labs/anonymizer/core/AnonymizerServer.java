@@ -9,7 +9,7 @@ import ru.labs.anonymizer.actors.HostStoreActor;
 public class AnonymizerServer {
     private AnonymizerRoutes routes;
 
-    public AnonymizerServer(ActorSystem system) {
+    public AnonymizerServer(ActorSystem system, String host, int port) {
         ActorRef hostStoreActor = system.actorOf(Props.create(HostStoreActor.class), "host-store");
         this.routes = new AnonymizerRoutes(system, hostStoreActor);
     }

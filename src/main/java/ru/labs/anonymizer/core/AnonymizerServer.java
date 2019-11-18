@@ -30,7 +30,7 @@ public class AnonymizerServer {
         return routes.routes();
     }
 
-    public void stop() {
+    public void stop() throws InterruptedException {
         this.serviceDiscovery.stop();
     }
 }

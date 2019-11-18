@@ -10,6 +10,6 @@ public class ServiceDiscovery {
     private ZooKeeper zoo;
 
     public ServiceDiscovery(String zkHost) throws IOException {
-        this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT, );
+        this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT, watchedEvent -> null);
     }
 }

@@ -17,7 +17,7 @@ public class ServiceDiscovery {
     public ServiceDiscovery(String zkHost, ActorRef serversStorageActor)
         throws IOException, KeeperException, InterruptedException {
         this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT, watchedEvent -> {
-            String path = watchedEvent.getPath();
+            String eventPath = watchedEvent.getPath();
             if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
 
             }

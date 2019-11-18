@@ -18,7 +18,7 @@ public class AddressStoreActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-            .match(AddAddressMessage.class, m -> {
+            .match(List<String>.class, m -> {
                 hostsStorage.put(m.getAddrName(), m.getAddr());
                 logger.info("added {} with name {}", m.getAddr(), m.getAddrName());
             })

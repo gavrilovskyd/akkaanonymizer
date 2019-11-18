@@ -16,12 +16,11 @@ public class ServiceDiscovery {
 
     public ServiceDiscovery(String zkHost, ActorRef serversStorageActor)
         throws IOException, KeeperException, InterruptedException {
-        this.serversStorageActor = serversStorageActor;
         this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT, watchedEvent -> {
 
         });
 
-        this.loadServersList();
+        this.loadServersList(serversStorageActor);
     }
 
     private void loadServersList(ActorRef serversStorageActor) throws KeeperException, InterruptedException {

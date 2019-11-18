@@ -15,6 +15,6 @@ public class AnonymizerServer {
     }
 
     public Route routes() {
-        return routes.route();
+        return routes.routes();
     }
 }

@@ -4,12 +4,16 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.http.javadsl.server.Route;
+import org.apache.zookeeper.KeeperException;
 import ru.labs.anonymizer.actors.HostStoreActor;
+
+import java.io.IOException;
 
 public class AnonymizerServer {
     private AnonymizerRoutes routes;
 
-    public AnonymizerServer(ActorSystem system, String zkHost, String host, int port) {
+    public AnonymizerServer(ActorSystem system, String zkHost, String host, int port)
+        throws InterruptedException, IOException, KeeperException {
         ActorRef hostStoreActor = system.actorOf(Props.create(HostStoreActor.class), "host-store");
         ServiceDiscovery serviceDiscovery = new ServiceDiscovery(zkHost, hostStoreActor);
         this.routes = new AnonymizerRoutes(system, hostStoreActor);

@@ -62,6 +62,7 @@ public class AnonymizerRoutes extends AllDirectives {
     }
 
     private CompletionStage<HttpResponse> redirect(String url, int count) {
+        logger.debug("redirecting to {} with count {}", url, count -1);
         return Patterns.ask(addrStoreActor, new GetRandomAddressMessage(), TIMEOUT)
             .thenCompose(addrParam -> {
                 String addr = ((String) addrParam);

@@ -24,7 +24,7 @@ public class ServiceDiscovery {
 
     }
 
-    private void loadServersList() {
+    private void loadServersList() throws KeeperException, InterruptedException {
         List<String> servers = zoo.getChildren(REGISTRY_ROOT, false);
         servers.forEach((server) -> {
                 try {

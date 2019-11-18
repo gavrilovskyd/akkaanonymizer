@@ -42,6 +42,10 @@ public class ServiceDiscovery {
         this.loadServersList(serversStorageActor);
     }
 
+    private void watchEvents(ActorRef serversStorageActor) {
+        
+    }
+
     private void loadServersList(ActorRef serversStorageActor) throws KeeperException, InterruptedException {
         List<String> servers = zoo.getChildren(REGISTRY_ROOT, false);
         servers.forEach((server) -> {

@@ -23,8 +23,7 @@ public class ServiceDiscovery {
         this.addressStorageActor = addressStorageActor;
         this.zoo = connect();
         watchNodes();
-
-        this.loadServersList();
+        loadServersList();
     }
 
     private ZooKeeper connect() throws IOException {
@@ -33,7 +32,7 @@ public class ServiceDiscovery {
                 || watchedEvent.getState() == Watcher.Event.KeeperState.Disconnected) {
                 try {
                     reconnect();
-                } catch (IOException e) {
+                } catch (IOException | InterruptedException | KeeperException e) {
                     // TODO: log error
                     e.printStackTrace();
                 }

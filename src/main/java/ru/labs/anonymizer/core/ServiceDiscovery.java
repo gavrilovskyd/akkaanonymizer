@@ -58,7 +58,7 @@ public class ServiceDiscovery {
 
     private void watchNodes() {
         try {
-            logger.debug("watch started");
+            logger.info("watch started");
             List<String> serverNodeNames = zoo.getChildren(REGISTRY_ROOT, watchedEvent -> {
                 if (watchedEvent.getType() == Watcher.Event.EventType.NodeChildrenChanged) {
                     logger.debug(watchedEvent.toString());
@@ -73,7 +73,7 @@ public class ServiceDiscovery {
                 addresses.add(new String(addr));
             }
 
-            logger.debug("got new nodes: {}", addresses);
+            logger.info("got new nodes: {}", addresses);
             addressStorageActor.tell(new SetAddressesMessage(addresses.toArray(new String[0])), ActorRef.noSender());
         } catch (KeeperException | InterruptedException e) {
             logger.error("got getChildren error:", e);

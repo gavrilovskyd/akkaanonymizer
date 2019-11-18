@@ -15,6 +15,8 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.CompletionStage;
 
 public class AnonymizerApp {
+    private static final Logger logger = LoggerFactory.getLogger(AnonymizerApp.class);
+
     public static void main(String[] args) throws Exception {
         if (args.length != 3) {
             System.err.println("Usage: AnonymizerApp <zkAddr> <host> <port>");
@@ -34,7 +36,7 @@ public class AnonymizerApp {
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
             routeFlow, ConnectHttp.toHost(host, port), materializer);
 
-        Logger logger = LoggerFactory.getLogger(AnonymizerApp.class);
+
         logger.info("Server started at http://{}:{}", host, port);
 
         System.in.read();

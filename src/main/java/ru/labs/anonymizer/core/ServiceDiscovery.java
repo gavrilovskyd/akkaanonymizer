@@ -72,7 +72,7 @@ public class ServiceDiscovery {
             }
 
             logger.debug("got new nodes: {}", addresses);
-            addressStorageActor.tell(new SetAddressesMessage(addresses.stream().coll), ActorRef.noSender());
+            addressStorageActor.tell(new SetAddressesMessage(addresses.stream().toArray(String[]::new)), ActorRef.noSender());
         } catch (KeeperException | InterruptedException e) {
             logger.error("got getChildren error:", e);
         }

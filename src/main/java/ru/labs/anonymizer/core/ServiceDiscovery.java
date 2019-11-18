@@ -3,6 +3,7 @@ package ru.labs.anonymizer.core;
 import akka.actor.ActorRef;
 import org.apache.zookeeper.*;
 import ru.labs.anonymizer.messages.AddHostMessage;
+import ru.labs.anonymizer.messages.RemoveHostMessage;
 
 import java.io.IOException;
 import java.util.List;
@@ -39,7 +40,7 @@ public class ServiceDiscovery {
             }
         } else if (watchedEvent.getType() == Watcher.Event.EventType.NodeDeleted) {
             hostStorageActor.tell(
-                new AddHostMessage(eventPath),
+                new RemoveHostMessage(eventPath),
                 ActorRef.noSender()
             );
         }

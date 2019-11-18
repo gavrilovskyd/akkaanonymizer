@@ -30,8 +30,7 @@ public class ServiceDiscovery {
             try {
                 byte[] addr = zoo.getData(eventPath, false, null);
                 hostStorageActor.tell(
-                    new AddHostMessage(eventPath, new String(addr),
-                        AddHostMessage.EventType.ADD),
+                    new AddHostMessage(eventPath, new String(addr)),
                     ActorRef.noSender()
                 );
             } catch (KeeperException | InterruptedException e) {

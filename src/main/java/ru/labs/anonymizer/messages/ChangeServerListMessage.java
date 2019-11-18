@@ -13,4 +13,12 @@ public class ChangeServerListMessage {
         this.serverAddr = serverAddr;
         this.type = type;
     }
+
+    public String getServerAddr() {
+        return serverAddr;
+    }
+
+    public EventType getType() {
+        return type;
+    }
 }

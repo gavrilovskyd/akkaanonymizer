@@ -17,8 +17,7 @@ public class ServiceDiscovery {
     private ZooKeeper zoo;
     private ActorRef addressStorageActor;
 
-    public ServiceDiscovery(String zkAddr, ActorRef addressStorageActor)
-        throws IOException {
+    public ServiceDiscovery(String zkAddr, ActorRef addressStorageActor) throws IOException {
         this.zkAddr = zkAddr;
         this.addressStorageActor = addressStorageActor;
         this.zoo = connect();

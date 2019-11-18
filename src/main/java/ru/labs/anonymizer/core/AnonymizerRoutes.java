@@ -12,6 +12,7 @@ public class AnonymizerRoutes extends AllDirectives {
 
     public AnonymizerRoutes(ActorSystem system, ActorRef hostStoreActor) {
         this.system = system;
+        this.hostStoreActor = hostStoreActor;
     }
 
     public Route route() {

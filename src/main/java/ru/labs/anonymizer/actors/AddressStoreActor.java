@@ -9,7 +9,7 @@ import ru.labs.anonymizer.messages.RemoveHostMessage;
 import java.util.HashMap;
 import java.util.Random;
 
-public class HostStoreActor extends AbstractActor {
+public class AddressStoreActor extends AbstractActor {
     private HashMap<String, String> hostsStorage = new HashMap<>();
 
     @Override

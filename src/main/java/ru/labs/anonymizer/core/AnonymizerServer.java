@@ -5,7 +5,7 @@ import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.http.javadsl.server.Route;
 import org.apache.zookeeper.KeeperException;
-import ru.labs.anonymizer.actors.HostStoreActor;
+import ru.labs.anonymizer.actors.AddressStoreActor;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ public class AnonymizerServer {
     public AnonymizerServer(ActorSystem system, String zkHost, String host, int port)
         throws InterruptedException, IOException, KeeperException {
 
-        ActorRef hostStoreActor = system.actorOf(Props.create(HostStoreActor.class), "host-store");
+        ActorRef hostStoreActor = system.actorOf(Props.create(AddressStoreActor.class), "host-store");
         this.serviceDiscovery = new ServiceDiscovery(zkHost, hostStoreActor);
         this.serviceDiscovery.register(SCHEME + "://" +host+":"+port);
 

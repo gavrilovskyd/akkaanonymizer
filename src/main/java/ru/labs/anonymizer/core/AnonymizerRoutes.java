@@ -15,7 +15,6 @@ import akka.japi.Pair;
 import akka.pattern.Patterns;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.labs.anonymizer.actors.AddressStoreActor;
 import ru.labs.anonymizer.messages.GetRandomAddressMessage;
 
 import java.time.Duration;
@@ -30,12 +29,10 @@ public class AnonymizerRoutes extends AllDirectives {
 
     private ActorRef addrStoreActor;
     private ActorSystem system;
-    private LoggingAdapter logger;
 
     public AnonymizerRoutes(ActorSystem system, ActorRef addrStoreActor) {
         this.system = system;
         this.addrStoreActor = addrStoreActor;
-        this.logger = Logging.getLogger(system, this);
     }
 
     public Route routes() {

@@ -22,11 +22,12 @@ public class ServiceDiscovery {
         });
 
        List<String> servers = zoo.getChildren(REGISTRY_ROOT, false);
-       servers.forEach((addr) ->
-           serversStorageActor.tell(
-               new ChangeServerListMessage(addr, ChangeServerListMessage.EventType.ADD),
-               ActorRef.noSender()
-           )
+       servers.forEach((addr) -> {
+               serversStorageActor.tell(
+                   new ChangeServerListMessage(addr, ChangeServerListMessage.EventType.ADD),
+                   ActorRef.noSender()
+               )
+           }
        );
     }
 

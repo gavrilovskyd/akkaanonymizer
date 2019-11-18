@@ -8,6 +8,6 @@ public class ServiceDiscovery {
     private ZooKeeper zoo;
 
     public ServiceDiscovery(String zkHost) {
-        this.zoo = new ZooKeeper(zkHost, )
+        this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT)
     }
 }

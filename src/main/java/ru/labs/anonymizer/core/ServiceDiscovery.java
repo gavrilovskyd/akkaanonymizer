@@ -23,7 +23,6 @@ public class ServiceDiscovery {
         this.addressStorageActor = addressStorageActor;
         this.zoo = connect();
         watchNodes();
-        loadServersList();
     }
 
     private ZooKeeper connect() throws IOException {

@@ -14,11 +14,11 @@ import java.util.concurrent.CompletionStage;
 
 public class AnonymizerApp {
     public static void main(String[] args) throws Exception {
-        if (args.length != 2) {
-            System.err.println("Usage: AnonymizerApp <host> <port>");
+        if (args.length != 3) {
+            System.err.println("Usage: AnonymizerApp <zkAddr> <host> <port>");
             System.exit(-1);
         }
-        String host = args[0];
+        String host = args[1];
         int port = Integer.parseInt(args[1]);
 
         ActorSystem system = ActorSystem.create("anonymizer-system");

@@ -1,6 +1,7 @@
 package ru.labs.anonymizer.core;
 
 import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 
@@ -16,7 +17,7 @@ public class ServiceDiscovery {
         this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT, watchedEvent -> {});
     }
 
-    public void register(String host) throws  {
+    public void register(String host) throws KeeperException {
         zoo.create(
             REGISTRY_NODE_PATH,
             host.getBytes(),

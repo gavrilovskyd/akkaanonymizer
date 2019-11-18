@@ -7,10 +7,15 @@ import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
+import akka.pattern.Patterns;
+import ru.labs.anonymizer.messages.GetRandomHostMessage;
 
+import java.time.Duration;
 import java.util.concurrent.CompletionStage;
 
 public class AnonymizerRoutes extends AllDirectives {
+    private static final Duration TIMEOUT = Duration.ofMillis(5000);
+
     private ActorRef hostStoreActor;
     private ActorSystem system;
 
@@ -43,6 +48,6 @@ public class AnonymizerRoutes extends AllDirectives {
     }
 
     private CompletionStage<HttpResponse> redirect(String url, int count) {
-
+        Patterns.ask(hostStoreActor, new GetRandomHostMessage(), )
     }
 }

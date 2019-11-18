@@ -52,10 +52,11 @@ public class AnonymizerRoutes extends AllDirectives {
 
     private CompletionStage<HttpResponse> redirect(String url, int count) {
         return Patterns.ask(hostStoreActor, new GetRandomHostMessage(), TIMEOUT)
-            .thenCompose(serverNameParam -> {
-                String serverName = ((String) serverNameParam);
+            .thenCompose(hostParam -> {
+                String host = ((String) hostParam);
                 Uri.create("go")
-                    .addPathSegment()
+                    .scheme("http")
+                    .host(host)
                     .query(Query.create(Pair.create("url", url)))
             });
     }

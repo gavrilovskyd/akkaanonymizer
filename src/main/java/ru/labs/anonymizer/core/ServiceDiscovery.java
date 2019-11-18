@@ -12,8 +12,8 @@ public class ServiceDiscovery {
     private static final String REGISTRY_ROOT = "/servers";
     private static final String REGISTRY_NODE_PATH = REGISTRY_ROOT+"/s";
 
-
     private ZooKeeper zoo;
+    private ActorRef serversStorageActor;
 
     public ServiceDiscovery(String zkHost, ActorRef serversStorageActor)
         throws IOException, KeeperException, InterruptedException {

@@ -8,7 +8,7 @@ import java.io.IOException;
 public class ServiceDiscovery {
     private static final int SESSION_TIMEOUT = 3000; // ms
     private static final String REGISTRY_ROOT = "/servers";
-    private static final String REGISTRY_NODE_PATH = "/servers/s";
+    private static final String REGISTRY_NODE_PATH = REGISTRY_ROOT+"/s";
 
 
     private ZooKeeper zoo;

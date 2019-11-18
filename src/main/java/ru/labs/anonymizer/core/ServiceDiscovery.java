@@ -24,7 +24,7 @@ public class ServiceDiscovery {
         this.loadServersList(serversStorageActor);
     }
 
-    private void watchEvents(WatchedEvent watchedEvent) {
+    private void process(WatchedEvent watchedEvent) {
         String eventPath = watchedEvent.getPath();
         if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
             try {

@@ -20,7 +20,7 @@ public class ServiceDiscovery {
         this.hostStorageActor = hostStorageActor;
         this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT, this::watchEvents);
 
-        this.loadServersList(hostStorageActor);
+        this.loadServersList();
     }
 
     private void watchEvents(WatchedEvent watchedEvent) {
@@ -46,13 +46,13 @@ public class ServiceDiscovery {
         }
     }
 
-    private void loadServersList(ActorRef serversStorageActor) throws KeeperException, InterruptedException {
+    private void loadServersList() throws KeeperException, InterruptedException {
         List<String> servers = zoo.getChildren(REGISTRY_ROOT, false);
         servers.forEach((server) -> {
                 try {
                     String serverPath = REGISTRY_ROOT+"/"+server;
                     byte[] addr = zoo.getData(serverPath, false, null);
-                    serversStorageActor.tell(
+                    hostStorageActor.tell(
                         new AddHostMessage(serverPath, new String(addr),
                             AddHostMessage.EventType.ADD),
                         ActorRef.noSender()

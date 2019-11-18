@@ -22,7 +22,7 @@ public class ServiceDiscovery {
 
         });
 
-
+        loadServersList();
     }
 
     private void loadServersList() throws KeeperException, InterruptedException {

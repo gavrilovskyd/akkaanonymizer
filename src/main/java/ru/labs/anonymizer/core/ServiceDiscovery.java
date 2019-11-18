@@ -21,7 +21,8 @@ public class ServiceDiscovery {
         throws IOException, KeeperException, InterruptedException {
         this.zkAddr = zkAddr;
         this.addressStorageActor = addressStorageActor;
-        this.zoo = new ZooKeeper(zkAddr, SESSION_TIMEOUT, this::watchEvents);
+        this.zoo = connect();
+        watchNodes();
 
         this.loadServersList();
     }

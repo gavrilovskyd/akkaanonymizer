@@ -23,6 +23,6 @@ public class ServiceDiscovery {
             host.getBytes(),
             ZooDefs.Ids.OPEN_ACL_UNSAFE,
             CreateMode.EPHEMERAL_SEQUENTIAL
-            );
+        );
     }
 }

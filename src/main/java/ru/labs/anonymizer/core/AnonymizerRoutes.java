@@ -33,7 +33,7 @@ public class AnonymizerRoutes extends AllDirectives {
                 route(
                     get(() ->
                         parameter("url", urlQuery ->
-                            parameter("count", countQuery-> {
+                            parameter("count", countQuery -> {
                                 int count = Integer.parseInt(countQuery);
                                 if (count == 0) {
                                     return completeWithFuture(fetch(urlQuery));
@@ -58,7 +58,7 @@ public class AnonymizerRoutes extends AllDirectives {
                     .scheme("http")
                     .host(host)
                     .query(Query.create(Pair.create("url", url)))
-                    .query(Query.create(Pair.create("count", Integer.toString(count-1))));
+                    .query(Query.create(Pair.create("count", Integer.toString(count - 1))));
             });
     }
 }

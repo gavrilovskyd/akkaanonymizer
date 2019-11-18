@@ -1,4 +1,4 @@
-package ru.labs.anonymizer;
+package ru.labs.anonymizer.core;
 
 public class AnonymizerApp {
 }

@@ -24,6 +24,10 @@ public class ServiceDiscovery {
         this.loadServersList();
     }
 
+    private ZooKeeper connect() {
+
+    }
+
     public void register(String addr) throws KeeperException, InterruptedException {
         zoo.create(
             REGISTRY_NODE_PATH,

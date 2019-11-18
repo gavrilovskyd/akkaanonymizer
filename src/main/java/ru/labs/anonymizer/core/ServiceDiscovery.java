@@ -1,10 +1,7 @@
 package ru.labs.anonymizer.core;
 
 import akka.actor.ActorRef;
-import org.apache.zookeeper.CreateMode;
-import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.ZooDefs;
-import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.*;
 
 import java.io.IOException;
 

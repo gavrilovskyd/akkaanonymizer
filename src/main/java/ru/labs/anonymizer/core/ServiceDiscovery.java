@@ -42,6 +42,7 @@ public class ServiceDiscovery {
             if (watchedEvent.getState() == Watcher.Event.KeeperState.Expired
                 || watchedEvent.getState() == Watcher.Event.KeeperState.Disconnected) {
                 try {
+                    logger.info("starting reconnect");
                     reconnect();
                 } catch (IOException e) {
                     // TODO: log error

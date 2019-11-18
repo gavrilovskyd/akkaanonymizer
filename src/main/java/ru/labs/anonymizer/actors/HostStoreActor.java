@@ -15,10 +15,10 @@ public class HostStoreActor extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
             .match(AddHostMessage.class, m ->
-                hostsStorage.put(m.getServerName(), m.getServerAddr())
+                hostsStorage.put(m.getHostName(), m.getHost())
             )
             .match(RemoveHostMessage.class, m ->
-                hostsStorage.remove(m.getServerName())
+                hostsStorage.remove(m.getHostName())
             )
             .match(GetRandomHostMessage.class, m -> {
                 Object[] servers = hostsStorage.values().toArray();

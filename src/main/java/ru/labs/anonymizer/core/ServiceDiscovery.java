@@ -59,24 +59,24 @@ public class ServiceDiscovery {
         });
 
 
-        String eventPath = watchedEvent.getPath();
-        if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
-            try {
-                byte[] addr = zoo.getData(eventPath, false, null);
-                addressStorageActor.tell(
-                    new AddAddressMessage(eventPath, new String(addr)),
-                    ActorRef.noSender()
-                );
-            } catch (KeeperException | InterruptedException e) {
-                // TODO: log message
-                e.printStackTrace();
-            }
-        } else if (watchedEvent.getType() == Watcher.Event.EventType.NodeDeleted) {
-            addressStorageActor.tell(
-                new RemoveAddressMessage(eventPath),
-                ActorRef.noSender()
-            );
-        }
+        //String eventPath = watchedEvent.getPath();
+        //if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
+        //    try {
+        //        byte[] addr = zoo.getData(eventPath, false, null);
+        //        addressStorageActor.tell(
+        //            new AddAddressMessage(eventPath, new String(addr)),
+        //            ActorRef.noSender()
+        //        );
+        //    } catch (KeeperException | InterruptedException e) {
+        //        // TODO: log message
+        //        e.printStackTrace();
+        //    }
+        //} else if (watchedEvent.getType() == Watcher.Event.EventType.NodeDeleted) {
+        //    addressStorageActor.tell(
+        //        new RemoveAddressMessage(eventPath),
+        //        ActorRef.noSender()
+        //    );
+        //}
     }
 
     private void loadServersList() throws KeeperException, InterruptedException {

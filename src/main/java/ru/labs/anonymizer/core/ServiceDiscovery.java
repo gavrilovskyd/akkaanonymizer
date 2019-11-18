@@ -24,6 +24,15 @@ public class ServiceDiscovery {
         this.loadServersList();
     }
 
+    public void register(String host) throws KeeperException, InterruptedException {
+        zoo.create(
+            REGISTRY_NODE_PATH,
+            host.getBytes(),
+            ZooDefs.Ids.OPEN_ACL_UNSAFE,
+            CreateMode.EPHEMERAL_SEQUENTIAL
+        );
+    }
+
     private void watchEvents(WatchedEvent watchedEvent) {
         String eventPath = watchedEvent.getPath();
         if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
@@ -60,15 +69,6 @@ public class ServiceDiscovery {
                     e.printStackTrace();
                 }
             }
-        );
-    }
-
-    public void register(String host) throws KeeperException, InterruptedException {
-        zoo.create(
-            REGISTRY_NODE_PATH,
-            host.getBytes(),
-            ZooDefs.Ids.OPEN_ACL_UNSAFE,
-            CreateMode.EPHEMERAL_SEQUENTIAL
         );
     }
 }

@@ -46,7 +46,6 @@ public class ServiceDiscovery {
                     reconnect();
                 } catch (IOException e) {
                     logger.error("got state watch error: {}", e);
-                    e.printStackTrace();
                 }
             }
         });

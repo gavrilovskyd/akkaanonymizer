@@ -58,6 +58,7 @@ public class AnonymizerRoutes extends AllDirectives {
                     .scheme("http")
                     .host(host)
                     .query(Query.create(Pair.create("url", url)))
+                    .query(Query.create(Pair.create("count", count-1)));
             });
     }
 }

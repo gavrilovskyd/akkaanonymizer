@@ -14,7 +14,7 @@ import java.time.Duration;
 import java.util.concurrent.CompletionStage;
 
 public class AnonymizerRoutes extends AllDirectives {
-    private static final Duration TIMEOUT = Duration.ofMillis(5000);
+    private static final Duration TIMEOUT = Duration.ofMillis(5000); // ms
 
     private ActorRef hostStoreActor;
     private ActorSystem system;

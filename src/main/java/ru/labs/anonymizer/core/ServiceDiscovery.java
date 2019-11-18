@@ -53,7 +53,12 @@ public class ServiceDiscovery {
         );
     }
 
-    private void watchNodes(WatchedEvent watchedEvent) {
+    private void watchNodes() {
+        zoo.getChildren(REGISTRY_ROOT, watchedEvent -> {
+            if (watchedEvent.getType() == )
+        })
+
+
         String eventPath = watchedEvent.getPath();
         System.out.println(watchedEvent.toString());
         if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {

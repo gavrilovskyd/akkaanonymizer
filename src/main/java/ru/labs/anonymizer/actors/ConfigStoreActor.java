@@ -21,7 +21,7 @@ public class ConfigStoreActor extends AbstractActor {
                 serversStorage.remove(m.getServerName())
             )
             .match(GetRandomServerMessage.class, m -> {
-                serversStorage.
+
             })
             .build();
     }

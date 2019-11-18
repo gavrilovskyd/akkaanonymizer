@@ -3,7 +3,10 @@ package ru.labs.anonymizer.actors;
 import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
 
+import java.util.HashMap;
+
 public class ConfigStoreActor extends AbstractActor {
+    private HashMap<String, String> serversStorage = new H
 
     @Override
     public Receive createReceive() {

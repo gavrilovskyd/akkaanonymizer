@@ -53,7 +53,7 @@ public class ServiceDiscovery {
         );
     }
 
-    private void watchEvents(WatchedEvent watchedEvent) {
+    private void watchNodes(WatchedEvent watchedEvent) {
         String eventPath = watchedEvent.getPath();
         System.out.println(watchedEvent.toString());
         if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {

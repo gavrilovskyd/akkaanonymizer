@@ -39,8 +39,7 @@ public class ServiceDiscovery {
             }
         } else if (watchedEvent.getType() == Watcher.Event.EventType.NodeDeleted) {
             hostStorageActor.tell(
-                new AddHostMessage(eventPath, "",
-                    AddHostMessage.EventType.REMOVE),
+                new AddHostMessage(eventPath),
                 ActorRef.noSender()
             );
         }

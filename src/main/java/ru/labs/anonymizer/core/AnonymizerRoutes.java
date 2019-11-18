@@ -13,6 +13,9 @@ import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
 import akka.japi.Pair;
 import akka.pattern.Patterns;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ru.labs.anonymizer.actors.AddressStoreActor;
 import ru.labs.anonymizer.messages.GetRandomAddressMessage;
 
 import java.time.Duration;
@@ -23,6 +26,7 @@ public class AnonymizerRoutes extends AllDirectives {
     private static final String HTTP_METHOD_NAME = "go";
     private static final String URL_PARAM_NAME = "url";
     private static final String COUNT_NAME = "count";
+    private static final Logger logger = LoggerFactory.getLogger(AnonymizerRoutes.class);
 
     private ActorRef addrStoreActor;
     private ActorSystem system;

@@ -4,9 +4,9 @@ public class AddHostMessage {
     private String hostName;
     private String host;
 
-    public AddHostMessage(String serverName, String serverAddr) {
-        this.serverName = serverName;
-        this.serverAddr = serverAddr;
+    public AddHostMessage(String hostName, String host) {
+        this.hostName = hostName;
+        this.host = host;
     }
 
     public String getServerName() {

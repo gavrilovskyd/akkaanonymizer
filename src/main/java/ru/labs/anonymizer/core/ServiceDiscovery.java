@@ -1,9 +1,8 @@
 package ru.labs.anonymizer.core;
 
-import akka.actor.Actor;
 import akka.actor.ActorRef;
 import org.apache.zookeeper.*;
-import ru.labs.anonymizer.messages.ChangeServerListMessage;
+import ru.labs.anonymizer.messages.AddServerMessage;
 
 import java.io.IOException;
 import java.util.List;
@@ -30,8 +29,8 @@ public class ServiceDiscovery {
             try {
                 byte[] addr = zoo.getData(eventPath, false, null);
                 serversStorageActor.tell(
-                    new ChangeServerListMessage(eventPath, new String(addr),
-                        ChangeServerListMessage.EventType.ADD),
+                    new AddServerMessage(eventPath, new String(addr),
+                        AddServerMessage.EventType.ADD),
                     ActorRef.noSender()
                 );
             } catch (KeeperException | InterruptedException e) {
@@ -40,8 +39,8 @@ public class ServiceDiscovery {
             }
         } else if (watchedEvent.getType() == Watcher.Event.EventType.NodeDeleted) {
             serversStorageActor.tell(
-                new ChangeServerListMessage(eventPath, "",
-                    ChangeServerListMessage.EventType.REMOVE),
+                new AddServerMessage(eventPath, "",
+                    AddServerMessage.EventType.REMOVE),
                 ActorRef.noSender()
             );
         }
@@ -54,8 +53,8 @@ public class ServiceDiscovery {
                     String serverPath = REGISTRY_ROOT+"/"+server;
                     byte[] addr = zoo.getData(serverPath, false, null);
                     serversStorageActor.tell(
-                        new ChangeServerListMessage(serverPath, new String(addr),
-                            ChangeServerListMessage.EventType.ADD),
+                        new AddServerMessage(serverPath, new String(addr),
+                            AddServerMessage.EventType.ADD),
                         ActorRef.noSender()
                     );
                 } catch (KeeperException | InterruptedException e) {

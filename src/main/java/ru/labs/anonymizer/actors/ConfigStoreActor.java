@@ -11,7 +11,7 @@ public class ConfigStoreActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-
+            .match()
             .build();
     }
 }

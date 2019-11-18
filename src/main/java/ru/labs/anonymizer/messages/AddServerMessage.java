@@ -1,19 +1,12 @@
 package ru.labs.anonymizer.messages;
 
-public class ChangeServerListMessage {
-    public enum EventType {
-        ADD,
-        REMOVE
-    };
-
+public class AddServerMessage {
     private String serverName;
     private String serverAddr;
-    private EventType type;
 
-    public ChangeServerListMessage(String serverName, String serverAddr, EventType type) {
+    public AddServerMessage(String serverName, String serverAddr) {
         this.serverName = serverName;
         this.serverAddr = serverAddr;
-        this.type = type;
     }
 
     public String getServerName() {
@@ -22,9 +15,5 @@ public class ChangeServerListMessage {
 
     public String getServerAddr() {
         return serverAddr;
-    }
-
-    public EventType getType() {
-        return type;
     }
 }

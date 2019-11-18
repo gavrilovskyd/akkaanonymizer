@@ -5,6 +5,7 @@ import org.apache.zookeeper.*;
 import ru.labs.anonymizer.messages.SetAddressesMessage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceDiscovery {
@@ -60,6 +61,7 @@ public class ServiceDiscovery {
                 }
             });
 
+            List<String> addresses = new ArrayList<>();
             servers.forEach((server) -> {
                     try {
                         String serverPath = REGISTRY_ROOT + "/" + server;

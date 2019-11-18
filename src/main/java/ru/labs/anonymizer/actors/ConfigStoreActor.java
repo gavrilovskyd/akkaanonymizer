@@ -13,12 +13,13 @@ public class ConfigStoreActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-            .match(AddServerMessage.class, m -> {
-                serversStorage.put(m.getServerName(), m.getServerAddr());
-            })
-            .match(RemoveServerMessage.class, m -> {
-                serversStorage.remove(m.getServerName());
-            })
+            .match(AddServerMessage.class, m ->
+                serversStorage.put(m.getServerName(), m.getServerAddr())
+            )
+            .match(RemoveServerMessage.class, m ->
+                serversStorage.remove(m.getServerName())
+            )
+            .match()
             .build();
     }
 }

@@ -27,11 +27,9 @@ public class ServiceDiscovery {
     }
 
     private ZooKeeper connect() throws IOException {
-        ZooKeeper zk = new ZooKeeper(zkAddr, SESSION_TIMEOUT, watchedEvent -> {
+        return new ZooKeeper(zkAddr, SESSION_TIMEOUT, watchedEvent -> {
 
         });
-
-        return zk;
     }
 
     public void register(String addr) throws KeeperException, InterruptedException {

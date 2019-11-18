@@ -14,11 +14,11 @@ public class ServiceDiscovery {
     private static final String REGISTRY_NODE_PATH = REGISTRY_ROOT+"/s";
 
     private ZooKeeper zoo;
-    private ActorRef hostStorageActor;
+    private ActorRef addressStorageActor;
 
-    public ServiceDiscovery(String zkAddr, ActorRef hostStorageActor)
+    public ServiceDiscovery(String zkAddr, ActorRef addressStorageActor)
         throws IOException, KeeperException, InterruptedException {
-        this.hostStorageActor = hostStorageActor;
+        this.addressStorageActor = addressStorageActor;
         this.zoo = new ZooKeeper(zkAddr, SESSION_TIMEOUT, this::watchEvents);
 
         this.loadServersList();
@@ -38,7 +38,7 @@ public class ServiceDiscovery {
         if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
             try {
                 byte[] addr = zoo.getData(eventPath, false, null);
-                hostStorageActor.tell(
+                addressStorageActor.tell(
                     new AddAddressMessage(eventPath, new String(addr)),
                     ActorRef.noSender()
                 );
@@ -47,7 +47,7 @@ public class ServiceDiscovery {
                 e.printStackTrace();
             }
         } else if (watchedEvent.getType() == Watcher.Event.EventType.NodeDeleted) {
-            hostStorageActor.tell(
+            addressStorageActor.tell(
                 new RemoveAddressMessage(eventPath),
                 ActorRef.noSender()
             );
@@ -60,7 +60,7 @@ public class ServiceDiscovery {
                 try {
                     String serverPath = REGISTRY_ROOT+"/"+server;
                     byte[] addr = zoo.getData(serverPath, false, null);
-                    hostStorageActor.tell(
+                    addressStorageActor.tell(
                         new AddAddressMessage(serverPath, new String(addr)),
                         ActorRef.noSender()
                     );

@@ -27,7 +27,7 @@ public class AnonymizerRoutes extends AllDirectives {
         this.hostStoreActor = hostStoreActor;
     }
 
-    public Route route() {
+    public Route routes() {
         return route(
             path("go", () ->
                 route(

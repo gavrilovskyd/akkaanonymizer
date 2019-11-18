@@ -20,7 +20,7 @@ public class AddressStoreActor extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
             .match(SetAddressListMessage.class, m -> {
-                hostsStorage = m.getAddrList();
+                addressStorage = m.getAddrList();
                 logger.info("received new hosts list");
             })
             .match(GetRandomAddressMessage.class, m -> {

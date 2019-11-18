@@ -32,7 +32,7 @@ public class AnonymizerRoutes extends AllDirectives {
                                 }
 
 
-
+                                return redirect(urlQuery, count);
                             })
                         ))
                 ))
@@ -44,6 +44,6 @@ public class AnonymizerRoutes extends AllDirectives {
     }
 
     private CompletionStage<HttpResponse> redirect(String url, int count) {
-        
+
     }
 }

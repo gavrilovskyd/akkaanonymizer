@@ -41,11 +41,7 @@ public class AnonymizerApp {
         System.in.read();
         binding.thenCompose(ServerBinding::unbind)
             .thenAccept(unbound -> {
-                try {
-                    server.stop();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                server.stop();
                 system.terminate();
             });
     }

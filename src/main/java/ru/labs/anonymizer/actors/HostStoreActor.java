@@ -22,7 +22,7 @@ public class HostStoreActor extends AbstractActor {
             )
             .match(GetRandomHostMessage.class, m -> {
                 Object[] servers = hostsStorage.values().toArray();
-
+                getSender().tell(servers[]);
             })
             .build();
     }

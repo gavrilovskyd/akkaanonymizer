@@ -67,7 +67,7 @@ public class ServiceDiscovery {
                 addresses.add(new String(addr));
             }
 
-            addressStorageActor.tell(new SetAddressesMessage(addresses.toArray()), );
+            addressStorageActor.tell(new SetAddressesMessage((String[]) addresses.toArray()), ActorRef.noSender());
         } catch (KeeperException | InterruptedException e) {
             e.printStackTrace();
         }

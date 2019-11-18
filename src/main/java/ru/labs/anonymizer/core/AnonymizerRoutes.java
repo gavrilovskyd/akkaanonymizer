@@ -9,9 +9,9 @@ import akka.http.javadsl.server.Route;
 public class AnonymizerRoutes extends AllDirectives {
     private ActorRef hostStoreActor;
     private ActorSystem system;
-    
-    public AnonymizerRoutes(ActorSystem system, ActorRef hostStoreActor) {
 
+    public AnonymizerRoutes(ActorSystem system, ActorRef hostStoreActor) {
+        this.system = system;
     }
 
     public Route route() {

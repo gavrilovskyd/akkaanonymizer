@@ -8,4 +8,9 @@ public class ChangeServerListMessage {
 
     private String serverAddr;
     private EventType type;
+
+    public ChangeServerListMessage(String serverAddr, EventType type) {
+        this.serverAddr = serverAddr;
+        this.type = type;
+    }
 }

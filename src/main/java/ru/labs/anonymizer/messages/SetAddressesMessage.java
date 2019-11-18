@@ -2,14 +2,14 @@ package ru.labs.anonymizer.messages;
 
 import java.util.List;
 
-public class SetAddressListMessage {
+public class SetAddressesMessage {
     private String[] addrList;
 
-    public SetAddressListMessage(String[] addrList) {
+    public SetAddressesMessage(String[] addrList) {
         this.addrList = addrList;
     }
 
-    public List<String> getAddrList() {
+    public String[] getAddrList() {
         return addrList;
     }
 }

@@ -5,11 +5,8 @@ import akka.event.Logging;
 import akka.event.LoggingAdapter;
 import akka.japi.pf.ReceiveBuilder;
 import ru.labs.anonymizer.messages.GetRandomAddressMessage;
-import ru.labs.anonymizer.messages.SetAddressListMessage;
+import ru.labs.anonymizer.messages.SetAddressesMessage;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Random;
 
 public class AddressStoreActor extends AbstractActor {
@@ -19,7 +16,7 @@ public class AddressStoreActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-            .match(SetAddressListMessage.class, m -> {
+            .match(SetAddressesMessage.class, m -> {
                 addressStorage = m.getAddrList();
                 logger.info("received new hosts list");
             })

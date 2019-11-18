@@ -41,6 +41,8 @@ public class AnonymizerRoutes extends AllDirectives {
                     get(() ->
                         parameter(URL_PARAM_NAME, urlQuery ->
                             parameter(COUNT_NAME, countQuery -> {
+                                logger.info("got request to {} with count {}", urlQuery, countQuery);
+
                                 int count = Integer.parseInt(countQuery);
                                 if (count == 0) {
                                     return completeWithFuture(fetch(urlQuery));

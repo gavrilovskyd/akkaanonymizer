@@ -26,6 +26,8 @@ public class AnonymizerRoutes extends AllDirectives {
                                 int count = Integer.parseInt(countQuery);
                                 if (count == 0) {
                                     return Http.get(system).singleRequest(HttpRequest.create(urlQuery));
+                                } else {
+                                    
                                 }
                             })
                         ))

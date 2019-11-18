@@ -18,6 +18,10 @@ import java.util.concurrent.CompletionStage;
 public class AnonymizerApp {
     private static final Logger logger = LoggerFactory.getLogger(AnonymizerApp.class);
 
+    static {
+        System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "trace");
+    }
+
     public static void main(String[] args) throws Exception {
         if (args.length != 3) {
             System.err.println("Usage: AnonymizerApp <zkAddr> <host> <port>");

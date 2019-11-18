@@ -53,8 +53,7 @@ public class ServiceDiscovery {
                     String serverPath = REGISTRY_ROOT+"/"+server;
                     byte[] addr = zoo.getData(serverPath, false, null);
                     hostStorageActor.tell(
-                        new AddHostMessage(serverPath, new String(addr),
-                            AddHostMessage.EventType.ADD),
+                        new AddHostMessage(serverPath, new String(addr)),
                         ActorRef.noSender()
                     );
                 } catch (KeeperException | InterruptedException e) {

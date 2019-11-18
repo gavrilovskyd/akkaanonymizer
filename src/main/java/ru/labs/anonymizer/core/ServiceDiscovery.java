@@ -22,7 +22,7 @@ public class ServiceDiscovery {
                 try {
                     byte[] addr = zoo.getData(eventPath, false, null);
                     serversStorageActor.tell(
-                        new ChangeServerListMessage(serverPath, new String(addr),
+                        new ChangeServerListMessage(eventPath, new String(addr),
                             ChangeServerListMessage.EventType.ADD),
                         ActorRef.noSender()
                     );

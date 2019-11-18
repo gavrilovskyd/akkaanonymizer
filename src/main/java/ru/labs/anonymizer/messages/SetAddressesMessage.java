@@ -5,11 +5,11 @@ import java.util.List;
 public class SetAddressesMessage {
     private String[] addresses;
 
-    public SetAddressesMessage(String[] addrList) {
-        this.addrList = addrList;
+    public SetAddressesMessage(String[] addresses) {
+        this.addresses = addresses;
     }
 
-    public String[] getAddrList() {
-        return addrList;
+    public String[] getAddresses() {
+        return addresses;
     }
 }

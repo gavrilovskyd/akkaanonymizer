@@ -15,8 +15,11 @@ public class AnonymizerServer {
 
     public AnonymizerServer(ActorSystem system, String zkHost, String host, int port)
         throws InterruptedException, IOException, KeeperException {
+
         ActorRef hostStoreActor = system.actorOf(Props.create(HostStoreActor.class), "host-store");
         this.serviceDiscovery = new ServiceDiscovery(zkHost, hostStoreActor);
+        this.serviceDiscovery.register(host+"");
+
         this.routes = new AnonymizerRoutes(system, hostStoreActor);
     }
 

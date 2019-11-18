@@ -48,6 +48,6 @@ public class AnonymizerRoutes extends AllDirectives {
     }
 
     private CompletionStage<HttpResponse> redirect(String url, int count) {
-        Patterns.ask(hostStoreActor, new GetRandomHostMessage(), )
+        Patterns.ask(hostStoreActor, new GetRandomHostMessage(), TIMEOUT)
     }
 }

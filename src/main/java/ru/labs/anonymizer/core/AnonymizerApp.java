@@ -9,6 +9,8 @@ import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.CompletionStage;
 
@@ -31,8 +33,10 @@ public class AnonymizerApp {
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = server.routes().flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
             routeFlow, ConnectHttp.toHost(host, port), materializer);
-        
-        System.out.println("Server started at http://"+host+":"+port);
+
+        Logger logger = LoggerFactory.getLogger(AnonymizerApp.class);
+        logger.info("Server started at http://{}:{}", host, port);
+        System.out.println();
         System.in.read();
         binding.thenCompose(ServerBinding::unbind)
             .thenAccept(unbound -> system.terminate());

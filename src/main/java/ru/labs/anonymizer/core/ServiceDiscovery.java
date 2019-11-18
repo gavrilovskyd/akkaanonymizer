@@ -55,13 +55,9 @@ public class ServiceDiscovery {
     }
 
     private void watchNodes() {
+        try {
         zoo.getChildren(REGISTRY_ROOT, watchedEvent -> {
             System.out.println(watchedEvent.toString());
-            try {
-                watchNodes();
-            } catch (KeeperException | InterruptedException e) {
-                e.printStackTrace();
-            }
         });
 
 

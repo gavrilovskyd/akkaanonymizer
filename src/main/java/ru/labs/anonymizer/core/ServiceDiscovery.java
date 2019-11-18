@@ -18,7 +18,7 @@ public class ServiceDiscovery {
     private ActorRef addressStorageActor;
 
     public ServiceDiscovery(String zkAddr, ActorRef addressStorageActor)
-        throws IOException, KeeperException, InterruptedException {
+        throws IOException {
         this.zkAddr = zkAddr;
         this.addressStorageActor = addressStorageActor;
         this.zoo = connect();

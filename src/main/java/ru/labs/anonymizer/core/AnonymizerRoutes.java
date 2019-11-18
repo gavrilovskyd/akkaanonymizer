@@ -21,11 +21,11 @@ import java.time.Duration;
 import java.util.concurrent.CompletionStage;
 
 public class AnonymizerRoutes extends AllDirectives {
+    private static final Logger logger = LoggerFactory.getLogger(AnonymizerRoutes.class);
     private static final Duration TIMEOUT = Duration.ofMillis(5000); // ms
     private static final String HTTP_METHOD_NAME = "go";
     private static final String URL_PARAM_NAME = "url";
     private static final String COUNT_NAME = "count";
-    private static final Logger logger = LoggerFactory.getLogger(AnonymizerRoutes.class);
 
     private ActorRef addrStoreActor;
     private ActorSystem system;

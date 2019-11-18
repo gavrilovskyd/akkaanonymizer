@@ -33,7 +33,7 @@ public class ServiceDiscovery {
     }
 
     private void reconnect() throws IOException {
-        zoo = connect()
+        zoo = connect();
     }
 
     public void register(String addr) throws KeeperException, InterruptedException {

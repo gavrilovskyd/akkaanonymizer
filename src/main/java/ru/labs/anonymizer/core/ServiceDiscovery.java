@@ -24,10 +24,10 @@ public class ServiceDiscovery {
         this.loadServersList();
     }
 
-    public void register(String host) throws KeeperException, InterruptedException {
+    public void register(String addr) throws KeeperException, InterruptedException {
         zoo.create(
             REGISTRY_NODE_PATH,
-            host.getBytes(),
+            addr.getBytes(),
             ZooDefs.Ids.OPEN_ACL_UNSAFE,
             CreateMode.EPHEMERAL_SEQUENTIAL
         );

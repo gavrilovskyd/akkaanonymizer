@@ -2,9 +2,9 @@ package ru.labs.anonymizer.actors;
 
 import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
-import ru.labs.anonymizer.messages.AddHostMessage;
-import ru.labs.anonymizer.messages.GetRandomHostMessage;
-import ru.labs.anonymizer.messages.RemoveHostMessage;
+import ru.labs.anonymizer.messages.AddAddressMessage;
+import ru.labs.anonymizer.messages.GetRandomAddressMessage;
+import ru.labs.anonymizer.messages.RemoveAddressMessage;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -15,13 +15,13 @@ public class AddressStoreActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-            .match(AddHostMessage.class, m ->
+            .match(AddAddressMessage.class, m ->
                 hostsStorage.put(m.getHostName(), m.getHost())
             )
-            .match(RemoveHostMessage.class, m ->
+            .match(RemoveAddressMessage.class, m ->
                 hostsStorage.remove(m.getHostName())
             )
-            .match(GetRandomHostMessage.class, m -> {
+            .match(GetRandomAddressMessage.class, m -> {
                 Object[] servers = hostsStorage.values().toArray();
                 getSender().tell(servers[new Random().nextInt(servers.length)], getSelf());
             })

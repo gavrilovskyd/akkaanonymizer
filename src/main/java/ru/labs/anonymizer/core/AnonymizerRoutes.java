@@ -11,7 +11,7 @@ import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
 import akka.japi.Pair;
 import akka.pattern.Patterns;
-import ru.labs.anonymizer.messages.GetRandomHostMessage;
+import ru.labs.anonymizer.messages.GetRandomAddressMessage;
 
 import java.time.Duration;
 import java.util.concurrent.CompletionStage;
@@ -51,7 +51,7 @@ public class AnonymizerRoutes extends AllDirectives {
     }
 
     private CompletionStage<HttpResponse> redirect(String url, int count) {
-        return Patterns.ask(hostStoreActor, new GetRandomHostMessage(), TIMEOUT)
+        return Patterns.ask(hostStoreActor, new GetRandomAddressMessage(), TIMEOUT)
             .thenCompose(hostParam -> {
                 String host = ((String) hostParam);
                 Uri redirectUri = Uri.create("go")

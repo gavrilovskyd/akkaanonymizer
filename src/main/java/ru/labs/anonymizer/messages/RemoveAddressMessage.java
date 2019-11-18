@@ -1,9 +1,9 @@
 package ru.labs.anonymizer.messages;
 
-public class RemoveHostMessage {
+public class RemoveAddressMessage {
     private String hostName;
 
-    public RemoveHostMessage(String hostName) {
+    public RemoveAddressMessage(String hostName) {
         this.hostName = hostName;
     }
 

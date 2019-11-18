@@ -2,8 +2,8 @@ package ru.labs.anonymizer.core;
 
 import akka.actor.ActorRef;
 import org.apache.zookeeper.*;
-import ru.labs.anonymizer.messages.AddHostMessage;
-import ru.labs.anonymizer.messages.RemoveHostMessage;
+import ru.labs.anonymizer.messages.AddAddressMessage;
+import ru.labs.anonymizer.messages.RemoveAddressMessage;
 
 import java.io.IOException;
 import java.util.List;
@@ -39,7 +39,7 @@ public class ServiceDiscovery {
             try {
                 byte[] addr = zoo.getData(eventPath, false, null);
                 hostStorageActor.tell(
-                    new AddHostMessage(eventPath, new String(addr)),
+                    new AddAddressMessage(eventPath, new String(addr)),
                     ActorRef.noSender()
                 );
             } catch (KeeperException | InterruptedException e) {
@@ -48,7 +48,7 @@ public class ServiceDiscovery {
             }
         } else if (watchedEvent.getType() == Watcher.Event.EventType.NodeDeleted) {
             hostStorageActor.tell(
-                new RemoveHostMessage(eventPath),
+                new RemoveAddressMessage(eventPath),
                 ActorRef.noSender()
             );
         }
@@ -61,7 +61,7 @@ public class ServiceDiscovery {
                     String serverPath = REGISTRY_ROOT+"/"+server;
                     byte[] addr = zoo.getData(serverPath, false, null);
                     hostStorageActor.tell(
-                        new AddHostMessage(serverPath, new String(addr)),
+                        new AddAddressMessage(serverPath, new String(addr)),
                         ActorRef.noSender()
                     );
                 } catch (KeeperException | InterruptedException e) {

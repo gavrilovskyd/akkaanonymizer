@@ -1,10 +1,10 @@
 package ru.labs.anonymizer.messages;
 
-public class AddHostMessage {
+public class AddAddressMessage {
     private String hostName;
     private String host;
 
-    public AddHostMessage(String hostName, String host) {
+    public AddAddressMessage(String hostName, String host) {
         this.hostName = hostName;
         this.host = host;
     }

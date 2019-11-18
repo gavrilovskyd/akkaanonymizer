@@ -16,8 +16,6 @@ public class AnonymizerRoutes extends AllDirectives {
                                 int count = Integer.parseInt(countQuery);
                                 if (count == 0) {
 
-                                } else {
-                                    
                                 }
                             })
                         ))

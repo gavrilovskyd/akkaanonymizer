@@ -13,6 +13,7 @@ public class ServiceDiscovery {
     private static final String REGISTRY_ROOT = "/servers";
     private static final String REGISTRY_NODE_PATH = REGISTRY_ROOT+"/s";
 
+    private String zkAddr;
     private ZooKeeper zoo;
     private ActorRef addressStorageActor;
 

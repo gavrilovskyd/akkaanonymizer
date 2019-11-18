@@ -41,7 +41,7 @@ public class ServiceDiscovery {
         try {
             zoo.close();
         } catch (InterruptedException e) {
-           logger.error("can not close zookeeper connection: {}", e);
+           logger.error("can not close zookeeper connection: ", e);
         }
     }
 

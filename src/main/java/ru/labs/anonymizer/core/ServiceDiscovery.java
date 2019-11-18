@@ -60,6 +60,7 @@ public class ServiceDiscovery {
         try {
             List<String> serverNodeNames = zoo.getChildren(REGISTRY_ROOT, watchedEvent -> {
                 if (watchedEvent.getType() == Watcher.Event.EventType.NodeChildrenChanged) {
+                    logger.debug(watchedEvent.toString());
                     watchNodes();
                 }
             });

@@ -29,7 +29,7 @@ public class AnonymizerApp {
 
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = server.routes().flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
-            routeFlow, ConnectHttp.toHost("localhost", 8080), materializer);
+            routeFlow, ConnectHttp.toHost(host, port), materializer);
 
         System.out.println("Server started at http://localhost:8080/");
         System.in.read();

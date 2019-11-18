@@ -2,6 +2,9 @@ package ru.labs.anonymizer.core;
 
 import akka.actor.ActorRef;
 import org.apache.zookeeper.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ru.labs.anonymizer.actors.AddressStoreActor;
 import ru.labs.anonymizer.messages.SetAddressesMessage;
 
 import java.io.IOException;
@@ -9,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceDiscovery {
+    private static final Logger logger = LoggerFactory.getLogger(AddressStoreActor.class);
     private static final int SESSION_TIMEOUT = 3000; // ms
     private static final String REGISTRY_ROOT = "/servers";
     private static final String REGISTRY_NODE_PATH = REGISTRY_ROOT + "/s";

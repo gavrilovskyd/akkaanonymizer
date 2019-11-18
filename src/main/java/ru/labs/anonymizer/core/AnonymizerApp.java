@@ -14,6 +14,10 @@ import java.util.concurrent.CompletionStage;
 
 public class AnonymizerApp {
     public static void main(String[] args) throws Exception {
+        if (args.length != 2) {
+            
+        }
+
         ActorSystem system = ActorSystem.create("anonymizer-system");
 
         final Http http = Http.get(system);

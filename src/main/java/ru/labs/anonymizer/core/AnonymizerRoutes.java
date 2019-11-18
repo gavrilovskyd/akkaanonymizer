@@ -35,7 +35,7 @@ public class AnonymizerRoutes extends AllDirectives {
             path(HTTP_METHOD_NAME, () ->
                 route(
                     get(() ->
-                        parameter("url", urlQuery ->
+                        parameter(URL_PARAM_NAME, urlQuery ->
                             parameter("count", countQuery -> {
                                 int count = Integer.parseInt(countQuery);
                                 if (count == 0) {

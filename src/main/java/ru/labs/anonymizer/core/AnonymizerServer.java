@@ -11,6 +11,7 @@ import java.io.IOException;
 
 public class AnonymizerServer {
     private AnonymizerRoutes routes;
+    private ServiceDiscovery serviceDiscovery;
 
     public AnonymizerServer(ActorSystem system, String zkHost, String host, int port)
         throws InterruptedException, IOException, KeeperException {

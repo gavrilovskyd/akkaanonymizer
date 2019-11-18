@@ -24,7 +24,6 @@ public class AddressStoreActor extends AbstractActor {
                 logger.info("received new hosts list");
             })
             .match(GetRandomAddressMessage.class, m -> {
-                Object[] servers = hostsStorage.;
                 getSender().tell(servers[new Random().nextInt(servers.length)], getSelf());
             })
             .matchAny(o -> { logger.warning("got unknown message: {}", o.getClass().toString()); })

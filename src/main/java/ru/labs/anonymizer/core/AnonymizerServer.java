@@ -20,7 +20,7 @@ public class AnonymizerServer {
 
         ActorRef hostStoreActor = system.actorOf(Props.create(HostStoreActor.class), "host-store");
         this.serviceDiscovery = new ServiceDiscovery(zkHost, hostStoreActor);
-        this.serviceDiscovery.register(SCHEME + "://" +host+"");
+        this.serviceDiscovery.register(SCHEME + "://" +host+":"+port);
 
         this.routes = new AnonymizerRoutes(system, hostStoreActor);
     }

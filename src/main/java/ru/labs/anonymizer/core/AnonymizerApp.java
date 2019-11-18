@@ -32,7 +32,7 @@ public class AnonymizerApp {
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
             routeFlow, ConnectHttp.toHost(host, port), materializer);
 
-        System.out.println("Server started at http://localhost:8080/");
+        System.out.println("Server started at http://"+host+":"+port);
         System.in.read();
         binding.thenCompose(ServerBinding::unbind)
             .thenAccept(unbound -> system.terminate());

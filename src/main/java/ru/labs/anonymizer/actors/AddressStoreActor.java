@@ -28,6 +28,7 @@ public class AddressStoreActor extends AbstractActor {
                 Object[] servers = hostsStorage.values().toArray();
                 getSender().tell(servers[new Random().nextInt(servers.length)], getSelf());
             })
+            .matchAny(o -> { logger.warning("got unknown message: {}", o.getClass().toString()); })
             .build();
     }
 }

@@ -22,9 +22,9 @@ public class AnonymizerRoutes extends AllDirectives {
     private ActorRef addrStoreActor;
     private ActorSystem system;
 
-    public AnonymizerRoutes(ActorSystem system, ActorRef hostStoreActor) {
+    public AnonymizerRoutes(ActorSystem system, ActorRef addrStoreActor) {
         this.system = system;
-        this.addrStoreActor = hostStoreActor;
+        this.addrStoreActor = addrStoreActor;
     }
 
     public Route routes() {

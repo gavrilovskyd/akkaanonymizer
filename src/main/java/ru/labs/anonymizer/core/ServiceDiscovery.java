@@ -6,6 +6,7 @@ import java.io.IOException;
 
 public class ServiceDiscovery {
     private static final int SESSION_TIMEOUT = 3000; // ms
+    
 
     private ZooKeeper zoo;
 
@@ -13,5 +14,7 @@ public class ServiceDiscovery {
         this.zoo = new ZooKeeper(zkHost, SESSION_TIMEOUT, watchedEvent -> {});
     }
 
-    
+    public void register(String host) {
+
+    }
 }

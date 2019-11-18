@@ -21,17 +21,16 @@ public class ServiceDiscovery {
 
             try {
             if (watchedEvent.getType() == Watcher.Event.EventType.NodeCreated) {
-
                     byte[] addr = zoo.getData(eventPath, false, null);
                     serversStorageActor.tell(
                         new ChangeServerListMessage(eventPath, new String(addr),
                             ChangeServerListMessage.EventType.ADD),
                         ActorRef.noSender()
                     );
-                } catch (KeeperException | InterruptedException e) {
-                    // TODO: log message
-                    e.printStackTrace();
-                }
+            }
+            } catch (KeeperException | InterruptedException e) {
+                // TODO: log message
+                e.printStackTrace();
             }
         });
 

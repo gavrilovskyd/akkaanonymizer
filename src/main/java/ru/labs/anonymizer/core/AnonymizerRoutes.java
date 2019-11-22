@@ -37,7 +37,7 @@ public class AnonymizerRoutes extends AllDirectives {
             .match(NumberFormatException.class, e ->
                 complete(StatusCodes.BAD_REQUEST, "count must be integer"))
             .match(UnknownHostException.class, e ->
-                complete(StatusCodes.BAD_REQUEST, e.toString()))
+                complete(StatusCodes.BAD_REQUEST, String.format("can not connect to url")))
             .build();
 
         return route(

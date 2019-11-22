@@ -8,6 +8,7 @@ import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.model.Query;
 import akka.http.javadsl.model.Uri;
 import akka.http.javadsl.server.AllDirectives;
+import akka.http.javadsl.server.ExceptionHandler;
 import akka.http.javadsl.server.Route;
 import akka.japi.Pair;
 import akka.pattern.Patterns;
@@ -38,7 +39,7 @@ public class AnonymizerRoutes extends AllDirectives {
             .match(ArithmeticException.class, x ->
                 complete(StatusCodes.BAD_REQUEST, "You've got your arithmetic wrong, fool!"))
             .build();
-        
+
         return route(
             path(HTTP_METHOD_NAME, () ->
                 route(

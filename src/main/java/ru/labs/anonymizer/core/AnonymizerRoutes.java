@@ -36,7 +36,7 @@ public class AnonymizerRoutes extends AllDirectives {
         final ExceptionHandler wrongParameterHandler = ExceptionHandler.newBuilder()
             .match(NumberFormatException.class, e ->
                 complete(StatusCodes.BAD_REQUEST, "count must be integer"))
-            .match(StreamTcpException.class, e ->
+            .match(.class, e ->
                 complete(StatusCodes.BAD_REQUEST, "can not connect to provided url"))
             .build();
 

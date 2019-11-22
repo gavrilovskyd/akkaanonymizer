@@ -35,7 +35,7 @@ public class AnonymizerRoutes extends AllDirectives {
     public Route routes() {
         final ExceptionHandler wrongParameterHandler = ExceptionHandler.newBuilder()
             .match(NumberFormatException.class, e ->
-                complete(StatusCodes.BAD_REQUEST, e.toString()))
+                complete(StatusCodes.BAD_REQUEST, 'count must be integer'))
             .match(UnknownHostException.class, e ->
                 complete(StatusCodes.BAD_REQUEST, e.toString()))
             .build();

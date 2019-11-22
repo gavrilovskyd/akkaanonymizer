@@ -83,8 +83,4 @@ public class AnonymizerRoutes extends AllDirectives {
                 return fetch(redirectUri.toString());
             });
     }
-
-    private CompletionStage<HttpResponse> tryRedirect(String url, int count, int retriesLeft) {
-        
-    }
 }

@@ -33,7 +33,7 @@ public class AnonymizerRoutes extends AllDirectives {
 
     public Route routes() {
         final ExceptionHandler divByZeroHandler = ExceptionHandler.newBuilder()
-            .match(ArithmeticException.class, x ->
+            .match(NumberFormatException.class, x ->
                 complete(StatusCodes.BAD_REQUEST, "You've got your arithmetic wrong, fool!"))
             .build();
 

@@ -56,7 +56,8 @@ public class AnonymizerRoutes extends AllDirectives {
                                 )
                             )
                         )
-                    ))
+                    )
+                )
             );
     }
 

@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.labs.anonymizer.messages.GetRandomAddressMessage;
 
+import java.net.UnknownHostException;
 import java.time.Duration;
 import java.util.concurrent.CompletionStage;
 
@@ -33,8 +34,10 @@ public class AnonymizerRoutes extends AllDirectives {
 
     public Route routes() {
         final ExceptionHandler wrongParameterHandler = ExceptionHandler.newBuilder()
-            .match(NumberFormatException.class, x ->
-                complete(StatusCodes.BAD_REQUEST, x.toString()))
+            .match(NumberFormatException.class, e ->
+                complete(StatusCodes.BAD_REQUEST, e.toString()))
+            .match(UnknownHostException.class, e ->
+                complete(StatusCodes.BAD_REQUEST, e.toString()))
             .build();
 
         return route(
@@ -43,7 +46,7 @@ public class AnonymizerRoutes extends AllDirectives {
                     get(() ->
                         parameter(URL_PARAM_NAME, urlQuery ->
                             parameter(COUNT_NAME, countQuery ->
-                                handleExceptions(wrongCountFormatHandler, () -> {
+                                handleExceptions(wrongParameterHandler, () -> {
                                         logger.info("got request to {} with count {}", urlQuery, countQuery);
 
                                         int count = Integer.parseInt(countQuery);

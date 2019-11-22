@@ -32,7 +32,7 @@ public class AnonymizerRoutes extends AllDirectives {
     }
 
     public Route routes() {
-        final ExceptionHandler wrongCountFormatHandler = ExceptionHandler.newBuilder()
+        final ExceptionHandler wrongParameterHandler = ExceptionHandler.newBuilder()
             .match(NumberFormatException.class, x ->
                 complete(StatusCodes.BAD_REQUEST, x.toString()))
             .build();

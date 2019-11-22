@@ -80,7 +80,7 @@ public class AnonymizerRoutes extends AllDirectives {
                         Pair.create(URL_PARAM_NAME, url),
                         Pair.create(COUNT_NAME, Integer.toString(count - 1))
                     ));
-                return fetch(redirectUri.toString()).;
+                return fetch(redirectUri.toString()).exceptionally();
             });
     }
 }

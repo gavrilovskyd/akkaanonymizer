@@ -9,6 +9,7 @@ import akka.http.javadsl.server.ExceptionHandler;
 import akka.http.javadsl.server.Route;
 import akka.japi.Pair;
 import akka.pattern.Patterns;
+import akka.stream.StreamTcpException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.labs.anonymizer.messages.GetRandomAddressMessage;
@@ -36,7 +37,7 @@ public class AnonymizerRoutes extends AllDirectives {
         final ExceptionHandler wrongParameterHandler = ExceptionHandler.newBuilder()
             .match(NumberFormatException.class, e ->
                 complete(StatusCodes.BAD_REQUEST, "count must be integer"))
-            .match(UnknownHostException.class, e ->
+            .match(StreamTcpException.class, e ->
                 complete(StatusCodes.BAD_REQUEST, "can not connect to provided url"))
             .build();
 

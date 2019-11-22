@@ -82,7 +82,7 @@ public class AnonymizerRoutes extends AllDirectives {
                     ));
                 return fetch(redirectUri.toString())
                     .whenCompleteAsync((result, exception) -> {
-                        
+                        if (exception ==)
                     });
             });
     }

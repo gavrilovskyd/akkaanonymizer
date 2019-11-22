@@ -34,6 +34,11 @@ public class AnonymizerRoutes extends AllDirectives {
     }
 
     public Route routes() {
+        final ExceptionHandler divByZeroHandler = ExceptionHandler.newBuilder()
+            .match(ArithmeticException.class, x ->
+                complete(StatusCodes.BAD_REQUEST, "You've got your arithmetic wrong, fool!"))
+            .build();
+        
         return route(
             path(HTTP_METHOD_NAME, () ->
                 route(

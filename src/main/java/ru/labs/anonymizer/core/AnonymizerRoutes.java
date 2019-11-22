@@ -54,7 +54,8 @@ public class AnonymizerRoutes extends AllDirectives {
                                         return completeWithFuture(redirect(urlQuery, count));
                                     }
                                 )
-                            ))
+                            )
+                        )
                     ))
             );
     }

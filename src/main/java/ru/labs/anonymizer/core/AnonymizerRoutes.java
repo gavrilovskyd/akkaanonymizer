@@ -42,7 +42,7 @@ public class AnonymizerRoutes extends AllDirectives {
                 route(
                     get(() ->
                         parameter(URL_PARAM_NAME, urlQuery ->
-                            parameter(COUNT_NAME, countQuery -> {
+                            parameter(COUNT_NAME, countQuery -> handleExceptions(wrongCountFormatHandler, () -> {
                                 logger.info("got request to {} with count {}", urlQuery, countQuery);
 
                                 int count = Integer.parseInt(countQuery);
@@ -51,7 +51,8 @@ public class AnonymizerRoutes extends AllDirectives {
                                 }
 
                                 return completeWithFuture(redirect(urlQuery, count));
-                            })
+                                }
+                            )
                         ))
                 ))
         );

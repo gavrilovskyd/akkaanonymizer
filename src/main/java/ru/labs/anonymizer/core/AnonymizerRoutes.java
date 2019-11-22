@@ -58,7 +58,8 @@ public class AnonymizerRoutes extends AllDirectives {
                         )
                     )
                 )
-            );
+            )
+        );
     }
 
     private CompletionStage<HttpResponse> fetch(String url) {

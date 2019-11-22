@@ -16,7 +16,6 @@ import ru.labs.anonymizer.messages.GetRandomAddressMessage;
 import java.net.UnknownHostException;
 import java.time.Duration;
 import java.util.concurrent.CompletionStage;
-import java.util.function.Function;
 
 public class AnonymizerRoutes extends AllDirectives {
     private static final Duration TIMEOUT = Duration.ofMillis(5000); // ms
@@ -81,8 +80,7 @@ public class AnonymizerRoutes extends AllDirectives {
                         Pair.create(URL_PARAM_NAME, url),
                         Pair.create(COUNT_NAME, Integer.toString(count - 1))
                     ));
-                return fetch(redirectUri.toString()).exceptionally(ex ->
-                    redirect(url, count).toCompletableFuture().get());
+                return fetch(redirectUri.toString());
             });
     }
 }
